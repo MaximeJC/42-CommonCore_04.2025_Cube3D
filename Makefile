@@ -1,0 +1,67 @@
+#! Variables
+
+NAME		= cub3D
+LIBFT_DIR	= libft/
+LIBFT		= libft/libft.a
+OBJ_DIR		= obj/
+SRC_DIR		= src/
+MLX_DIR		= minilibx-linux/
+MLX			= minilibx-linux/libmlx.a
+CC		= cc
+CFLAGS	= -g -Wall -Wextra -Werror -I/usr/include/ -Iminilibx-linux/ -Ilibft/
+CFLAGS	+= -Iinclude/
+DFLAGS	= -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+
+#! Sources
+
+# PARSE_DIR	=	parsing/
+# PARSE		=
+
+SRC_FILES	=	main \
+				# $(addprefix $(PARSE_DIR), $(PARSE)) \
+
+SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+
+#! Make
+
+$(NAME): $(OBJS)
+	@make -C $(LIBFT_DIR) --no-print-directory
+	@echo "Compiling $(NAME)..."
+	@$(CC) $(OBJS) $(MLX) $(LIBFT) $(DFLAGS) -o $(NAME)
+	@echo "$(NAME) compiled!"
+
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c | obj_mkdir
+	@echo "Compiling: $<"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+all: $(NAME)
+
+bonus: all
+
+clean:
+	@make clean -C $(LIBFT_DIR) --no-print-directory
+	@rm -rf $(OBJ_DIR)
+	@echo "$(NAME) objects files cleaned!"
+
+fclean: clean
+	@rm -f $(LIBFT)
+	@rm -f $(NAME)
+	@echo "$(NAME) removed!"
+
+libft:
+	@make -C $(LIBFT_DIR) --no-print-directory
+
+mlx:
+	@make -C $(MLX_DIR) --no-print-directory
+
+obj_mkdir:
+	@mkdir -p $(OBJ_DIR)
+
+norm:
+	@norminette src/ include/ -o
+
+re: fclean all
+	@echo "Cleaned and rebuild $(NAME) from zero!"
+
+.PHONY: all bonus clean fclean libft mlx norm re
