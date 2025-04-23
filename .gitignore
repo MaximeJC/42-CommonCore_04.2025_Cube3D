@@ -1,0 +1,10 @@
+obj/
+*.a
+*.o
+*.out
+.vscode
+*.code-workspace
+test
+cub3D
+!minilibx-linux/test
+Makefile.gen
