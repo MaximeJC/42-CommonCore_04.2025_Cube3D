@@ -1,4 +1,4 @@
-# 42-Cursus_04.2025_Philo
+# 42-Cursus_04.2025_Cube3D
 
 This program was created during the 42 cursus.
 
