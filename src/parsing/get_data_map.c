@@ -92,9 +92,9 @@ int check_rgb(char **tmp)
 {
 	if (ft_strtab_size(tmp) != 3)
 		return (1);
-	if ((atoi(tmp[0]) > 255 || atoi(tmp[0]) < 0)
-		|| (atoi(tmp[1]) > 255 || atoi(tmp[1]) < 0)
-		|| (atoi(tmp[2]) > 255) || atoi(tmp[2]) < 0)
+	else if ((ft_atoi(tmp[0]) > 255 || ft_atoi(tmp[0]) < 0)
+		|| (ft_atoi(tmp[1]) > 255 || ft_atoi(tmp[1]) < 0)
+		|| (ft_atoi(tmp[2]) > 255 || ft_atoi(tmp[2]) < 0))
 		return (1);
 	return (0);
 }
