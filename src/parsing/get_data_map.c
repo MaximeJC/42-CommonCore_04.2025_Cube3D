@@ -3,7 +3,7 @@
 int get_texture(t_data **data, char *line);
 int get_rgb(t_data **data, char *line, int i, char **tmp);
 int check_rgb(char **tmp);
-int check_data(t_data **data);
+int check_data(t_data **data, int err);
 
 int get_data_map(t_data **data)
 {
@@ -24,12 +24,9 @@ int get_data_map(t_data **data)
 		err += get_rgb(data, line, -1, NULL);
 		free(line);
 		line = get_next_line(fd);
-	}
-	free(line);
-	if (check_data(data) == 1)
-		return (ft_putendl_fd ("missing args in .cub files", 1), 1);
-	// message d erreur temporaire
-	return (0);
+		if (check_data(data, 0) == 0 && err == 0)
+	if (check_data(data, 1) == 1)
+		return (close(fd), 1);
 }
 
 
@@ -102,15 +99,24 @@ int check_rgb(char **tmp)
 	return (0);
 }
 
-int check_data(t_data **data)
+int check_data(t_data **data, int err)
 {
+	int i;
+
+	i = -1;
 	if ((*data)->d_map->no_texture == NULL)
-		return (1);
+		return (check_data_error("North texture is missing", err) , 1);
 	else if ((*data)->d_map->so_texture == NULL)
-		return (1);
+		return (check_data_error("South texture is missing", err) , 1);
 	else if ((*data)->d_map->we_texture == NULL)
-		return (1);
+		return (check_data_error("West texture is missing", err) , 1);
 	else if ((*data)->d_map->ea_texture == NULL)
+		return (check_data_error("East texture is missing", err) , 1);
+	while(++i < 3)
+	{
+		if ((*data)->d_map->c_rgb[i] == -1 || (*data)->d_map->f_rgb[i] == -1)
 		return (1);
+	}
 	return (0);
+	//message erreur temporaire
 }
