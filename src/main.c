@@ -1,7 +1,10 @@
 #include "cub3d.h"
 
-int init_data(t_data **data, char const *filename)
+int init_map(t_data **data, char const *filename)
 {	
+	int i;
+
+	i = -1;
 	(*data)->d_map = malloc(sizeof(t_map));
 	if ((*data)->d_map == NULL)
 		return (ft_putendl_fd(ERR_MALLOC, 2), 1);
@@ -12,6 +15,11 @@ int init_data(t_data **data, char const *filename)
 	(*data)->filename = ft_strdup(filename);
 	if ((*data)->filename == NULL)
 		return (ft_putendl_fd(ERR_MALLOC, 2), 1);
+	while(++i < 3)
+	{
+		(*data)->d_map->c_rgb[i] = -1;
+		(*data)->d_map->f_rgb[i] = -1;
+	}
 
 	return (0);
 }
@@ -28,6 +36,7 @@ int	check_arg(int argc)
 int	main(int argc, char const *argv[])
 {
 	t_data *data;
+	int i = 0;
 
 	data = malloc(sizeof(t_data));
 	if (data == NULL)
@@ -37,7 +46,7 @@ int	main(int argc, char const *argv[])
 		return (1);
 	if (check_mapfile((char *)argv[1]) != 0)
 		return (1);
-	if (init_data(&data, argv[1]) != 0)
+	if (init_map(&data, argv[1]) != 0)
 		return (1);
 	if (get_data_map(&data) != 0)
 		return (1);
@@ -52,6 +61,11 @@ int	main(int argc, char const *argv[])
 	ft_putendl_fd(data->d_map->ea_texture, 1);
 
 	ft_printf("f %d,%d,%d\n", data->d_map->f_rgb[0], data->d_map->f_rgb[1], data->d_map->f_rgb[2]);
-	ft_printf("f %d,%d,%d\n", data->d_map->c_rgb[0], data->d_map->c_rgb[1], data->d_map->c_rgb[2]);
+	ft_printf("c %d,%d,%d\n", data->d_map->c_rgb[0], data->d_map->c_rgb[1], data->d_map->c_rgb[2]);
+	while(data->d_map->map[i])
+	{
+		ft_printf("%su\n", data->d_map->map[i]);
+		i++;
+	}
 	return (0);
 }
