@@ -25,6 +25,8 @@ int get_data_map(t_data **data)
 		free(line);
 		line = get_next_line(fd);
 		if (check_data(data, 0) == 0 && err == 0)
+err += get_map(data, &line, fd);
+	}
 	if (check_data(data, 1) == 1)
 		return (close(fd), 1);
 }
