@@ -29,6 +29,9 @@ err += get_map(data, &line, fd);
 	}
 	if (check_data(data, 1) == 1)
 		return (close(fd), 1);
+if (err > 0)
+		return (close(fd), 1);
+	return (close(fd), 0);
 }
 
 
