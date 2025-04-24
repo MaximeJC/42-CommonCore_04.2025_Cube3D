@@ -21,6 +21,7 @@ int get_data_map(t_data **data)
 	{
 		err += check_empty_line(line, err);
 		err += get_texture(data, line);
+		err += get_rgb(data, line, -1, NULL);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -63,7 +64,7 @@ int get_texture(t_data **data, char *line)
 
 int get_rgb(t_data **data, char *line, int i, char **tmp)
 {
-	if (strncmp(line, "F ", 2) == 0)
+	if (ft_strncmp(line, "F ", 2) == 0)
 	{
 		tmp = ft_split(&line[2], ',');
 		if (tmp == NULL)
@@ -74,7 +75,7 @@ int get_rgb(t_data **data, char *line, int i, char **tmp)
 			(*data)->d_map->f_rgb[i] = ft_atoi(tmp[i]);
 		free(tmp);
 	}
-	else if (strncmp(line, "C ", 2) == 0)
+	else if (ft_strncmp(line, "C ", 2) == 0)
 	{
 		i = -1;
 		tmp = ft_split(&line[2], ',');
