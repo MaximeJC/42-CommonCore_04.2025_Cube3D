@@ -8,11 +8,34 @@
 # include <fcntl.h>
 # include <math.h>
 
+//Map struct
+	typedef struct s_map
+	{
+		char	*no_texture;
+		char	*so_texture;
+		char	*we_texture;
+		char	*ea_texture;
+		int		f_rgb[4];
+		int		c_rgb[4];
+		char	**map;
+	}			t_map;
+
+//Global data struct
+	typedef struct s_data
+	{
+		char	*filename;
+		t_map	*d_map;
+	}			t_data;
+
+//* Error messages - Global
+# define ERR_MALLOC "Error: Malloc Error"
+
 //* Error messages - Map check
 # define ERR_ARGS "Usage: ./cub3D <map.cub>"
 # define ERR_MAP_FILE "Error: Invalid file format. Expected a '.cub' file."
-# define ERR_TM_ARG "Error: Too many arguments. Usage: ./your_program map_file.cun"
-# define ERR_NE_ARG "Error: Not enough arguments. Usage: ./your_program map_file.cun"
+# define ERR_TM_ARG "Error: Too many arguments. Usage: ./program map_file.cun"
+# define ERR_NE_ARG "Error: Not enough arguments. Usage: ./program map_file.cun"
+# define ERR_NRGB "Error: Invalid color format. Use RGB format as 'R,G,B'."
 
 //* Error messages - MLX
 # define ERR_MLXD_INIT "mlx_data init error"
@@ -37,7 +60,10 @@
 
 //* parsing
 // -> check_mapfile
-
 int check_mapfile(char *str);
+// -> get_data_map
+int get_data_map(t_data **data);
+// -> get_map
+int get_map(t_data, char *line, int fd);
 
 #endif

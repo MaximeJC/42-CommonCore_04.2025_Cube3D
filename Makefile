@@ -15,7 +15,7 @@ DFLAGS	= -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 #! Sources
 
  PARSE_DIR	=	parsing/
- PARSE		=	check_mapfile \
+ PARSE		=	check_mapfile get_data_map get_map \
 
 SRC_FILES	=	main \
 				 $(addprefix $(PARSE_DIR), $(PARSE)) \
