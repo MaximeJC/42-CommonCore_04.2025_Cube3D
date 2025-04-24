@@ -25,11 +25,11 @@ int get_data_map(t_data **data)
 		free(line);
 		line = get_next_line(fd);
 		if (check_data(data, 0) == 0 && err == 0)
-err += get_map(data, &line, fd);
+			err += get_map(data, &line, fd);
 	}
 	if (check_data(data, 1) == 1)
 		return (close(fd), 1);
-if (err > 0)
+	if (err > 0)
 		return (close(fd), 1);
 	return (close(fd), 0);
 }
@@ -120,7 +120,7 @@ int check_data(t_data **data, int err)
 	while(++i < 3)
 	{
 		if ((*data)->d_map->c_rgb[i] == -1 || (*data)->d_map->f_rgb[i] == -1)
-		return (1);
+			return (1);
 	}
 	return (0);
 	//message erreur temporaire
