@@ -9,19 +9,17 @@ int get_data_map(t_data **data)
 {
 	int i;
 	int fd;
+	int err;
 	char *line;
 
 	i = 0;
+	err = 0;
 	fd = 0;
 	fd = open((*data)->filename, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (get_texture(data, line) != 0)
-			return (1);
-		if (get_rgb(data, line, -1, NULL) != 0)
-			return (1);
-		if (check_data(data));
+		err += check_empty_line(line, err);
 		free(line);
 		line = get_next_line(fd);
 	}

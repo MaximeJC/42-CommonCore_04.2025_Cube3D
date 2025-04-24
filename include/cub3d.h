@@ -64,6 +64,10 @@ int check_mapfile(char *str);
 // -> get_data_map
 int get_data_map(t_data **data);
 // -> get_map
+// -> get_data-map_utils
+int check_empty_line(char *line, int err);
+void check_data_error(char *sterr, int err);
+
 //* utils
 // -> error_handler
 void error_handler(char *msg, t_data **data, int exit);

@@ -14,12 +14,14 @@ DFLAGS	= -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 #! Sources
 
- PARSE_DIR	=	parsing/
+PARSE_DIR	=	parsing/
+PARSE		=	check_mapfile get_data_map get_map get_data_map_utils \
+
 UTILS_DIR	=	utils/
 UTILS		=	error_handler \
 
 SRC_FILES	=	main \
-				 $(addprefix $(PARSE_DIR), $(PARSE)) \
+				$(addprefix $(PARSE_DIR), $(PARSE)) \
 				$(addprefix $(UTILS_DIR), $(UTILS)) \
 
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
