@@ -64,6 +64,8 @@ typedef struct s_raycast
 # define ERR_TM_ARG "Error: Too many arguments. Usage: ./program map_file.cun"
 # define ERR_NE_ARG "Error: Not enough arguments. Usage: ./program map_file.cun"
 # define ERR_NRGB "Error: Invalid color format. Use RGB format as 'R,G,B'."
+# define ERR_CHAR "Error: Invalid character in map."
+# define ERR_WALL "Error: Wall not completed"
 
 //* Error messages - MLX
 # define ERR_MLXD_INIT "mlx_data init error"
@@ -90,12 +92,14 @@ typedef struct s_raycast
 // -> check_mapfile
 int		check_mapfile(char *str);
 // -> get_data_map
-int		get_data_map(t_data *data);
+int		get_data_map(t_data *data, int fd);
 // -> get_map
 int		get_map(t_data *data, char **line, int fd);
 // -> get_data-map_utils
 int		check_empty_line(char *line, int err);
 void	check_data_error(char *sterr, int err);
+// -> check_wall
+int	check_wall(t_data *data);
 
 //* struct
 // -> struct_data
