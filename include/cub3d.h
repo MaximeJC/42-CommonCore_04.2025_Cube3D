@@ -8,7 +8,16 @@
 # include <fcntl.h>
 # include <math.h>
 
-//Map struct
+//* Global data struct
+typedef struct s_data
+{
+	char				*filename;
+	void				*mlx_ptr;
+	void				*mlx_win;
+	struct s_map		*d_map;
+	struct s_player		*player;
+}						t_data;
+
 typedef struct s_map
 {
 	char	*no_texture;
@@ -62,15 +71,20 @@ typedef struct s_data
 // -> check_mapfile
 int		check_mapfile(char *str);
 // -> get_data_map
-int		get_data_map(t_data **data);
+int		get_data_map(t_data *data);
 // -> get_map
-int		get_map(t_data **data, char **line, int fd);
+int		get_map(t_data *data, char **line, int fd);
 // -> get_data-map_utils
 int		check_empty_line(char *line, int err);
 void	check_data_error(char *sterr, int err);
 
+//* struct
+// -> struct_data
+int		init_data(t_data *data, char *file);
+void	clear_data(t_data *data);
+
 //* utils
 // -> error_handler
-void	error_handler(char *msg, t_data **data, int exit);
+void	error_handler(char *msg, t_data *data, int exit);
 
 #endif

@@ -4,7 +4,7 @@ char	*ft_strdup_no_null(const char *src, size_t size);
 char	**ft_lst_to_maptab(t_list *lst, size_t size);
 int		get_max_len(t_list *l_map);
 
-int	get_map(t_data **data, char **line, int fd)
+int	get_map(t_data *data, char **line, int fd)
 {
 	int		i;
 	t_list	*l_map;
@@ -24,7 +24,7 @@ int	get_map(t_data **data, char **line, int fd)
 		free(*line);
 		*line = get_next_line(fd);
 	}
-	(*data)->d_map->map = ft_lst_to_maptab(l_map, get_max_len(l_map));
+	data->d_map->map = ft_lst_to_maptab(l_map, get_max_len(l_map));
 	return (0);
 }
 
