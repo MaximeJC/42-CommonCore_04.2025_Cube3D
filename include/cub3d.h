@@ -36,12 +36,16 @@ typedef struct s_map
 	char	**map;
 }			t_map;
 
-//Global data struct
-typedef struct s_data
+//* Player struct
+typedef struct s_player
 {
-	char	*filename;
-	t_map	*d_map;
-}			t_data;
+	float	pos_x;
+	float	pos_y;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
+}			t_player;
 
 //* Error messages - Global
 # define ERR_MALLOC "Error: Malloc Error"
@@ -92,6 +96,9 @@ void	clear_data(t_data *data);
 // -> struct_map
 int		init_map(t_data *data);
 void	clear_map(t_data *data);
+// -> struct_player
+int		init_player(t_data *data);
+void	clear_player(t_data *data);
 
 //* utils
 // -> error_handler
