@@ -18,14 +18,21 @@ typedef struct s_data
 	struct s_player		*player;
 }						t_data;
 
+//* Map struct
 typedef struct s_map
 {
 	char	*no_texture;
 	char	*so_texture;
 	char	*we_texture;
 	char	*ea_texture;
-	int		f_rgb[4];
-	int		c_rgb[4];
+	void	*no_img;
+	void	*so_img;
+	void	*we_img;
+	void	*ea_img;
+	int		f_rgb[3];
+	int		c_rgb[3];
+	int		height;
+	int		width;
 	char	**map;
 }			t_map;
 
@@ -82,6 +89,9 @@ void	check_data_error(char *sterr, int err);
 // -> struct_data
 int		init_data(t_data *data, char *file);
 void	clear_data(t_data *data);
+// -> struct_map
+int		init_map(t_data *data);
+void	clear_map(t_data *data);
 
 //* utils
 // -> error_handler
