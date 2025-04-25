@@ -16,6 +16,7 @@ DFLAGS	= -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 PARSE_DIR	=	parsing/
 PARSE		=	check_mapfile get_data_map get_map get_data_map_utils \
+				check_wall \
 
 STRUCT_DIR	=	struct/
 STRUCT		=	struct_data struct_map struct_player struct_raycast \

@@ -5,17 +5,17 @@ int	get_rgb(t_data *data, char *line, int i, char **tmp);
 int	check_rgb(char **tmp);
 int	check_data(t_data *data, int err);
 
-int	get_data_map(t_data *data)
+int	get_data_map(t_data *data,int fd)
 {
 	int		i;
-	int		fd;
 	int		err;
 	char	*line;
 
 	i = 0;
 	err = 0;
-	fd = 0;
 	fd = open(data->filename, O_RDONLY);
+	if (fd < 0)
+		return (error_handler(ERR_NAME_FILE, NULL, 0), 1);
 	line = get_next_line(fd);
 	while (line)
 	{

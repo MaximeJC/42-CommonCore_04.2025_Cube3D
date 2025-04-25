@@ -59,6 +59,7 @@ typedef struct s_raycast
 
 //* Error messages - Map check
 # define ERR_ARGS "Usage: ./cub3D <map.cub>"
+# define ERR_NAME_FILE "Error: Invalid file. Can't open file."
 # define ERR_MAP_FILE "Error: Invalid file format. Expected a '.cub' file."
 # define ERR_TM_ARG "Error: Too many arguments. Usage: ./program map_file.cun"
 # define ERR_NE_ARG "Error: Not enough arguments. Usage: ./program map_file.cun"
