@@ -14,11 +14,15 @@ DFLAGS	= -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 #! Sources
 
- PARSE_DIR	=	parsing/
- PARSE		=	check_mapfile \
+PARSE_DIR	=	parsing/
+PARSE		=	check_mapfile get_data_map get_map get_data_map_utils \
+
+UTILS_DIR	=	utils/
+UTILS		=	error_handler \
 
 SRC_FILES	=	main \
-				 $(addprefix $(PARSE_DIR), $(PARSE)) \
+				$(addprefix $(PARSE_DIR), $(PARSE)) \
+				$(addprefix $(UTILS_DIR), $(UTILS)) \
 
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -58,6 +62,7 @@ mlx:
 obj_mkdir:
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)$(PARSE_DIR)
+	@mkdir -p $(OBJ_DIR)$(UTILS_DIR)
 
 
 norm:
