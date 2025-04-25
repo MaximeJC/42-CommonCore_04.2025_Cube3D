@@ -47,6 +47,13 @@ typedef struct s_player
 	float	plane_y;
 }			t_player;
 
+typedef struct s_raycast
+{
+	float	camera_x;
+	float	ray_dir_x;
+	float	ray_dir_y;
+}			t_raycast;
+
 //* Error messages - Global
 # define ERR_MALLOC "Error: Malloc Error"
 
@@ -99,6 +106,8 @@ void	clear_map(t_data *data);
 // -> struct_player
 int		init_player(t_data *data);
 void	clear_player(t_data *data);
+// -> struct_raycast
+int		init_raycast(t_raycast *ray);
 
 //* utils
 // -> error_handler
