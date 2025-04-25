@@ -1,11 +1,11 @@
 #include "cub3d.h"
 
-int	get_texture(t_data **data, char *line);
-int	get_rgb(t_data **data, char *line, int i, char **tmp);
+int	get_texture(t_data *data, char *line);
+int	get_rgb(t_data *data, char *line, int i, char **tmp);
 int	check_rgb(char **tmp);
-int	check_data(t_data **data, int err);
+int	check_data(t_data *data, int err);
 
-int	get_data_map(t_data **data)
+int	get_data_map(t_data *data)
 {
 	int		i;
 	int		fd;
@@ -15,7 +15,7 @@ int	get_data_map(t_data **data)
 	i = 0;
 	err = 0;
 	fd = 0;
-	fd = open((*data)->filename, O_RDONLY);
+	fd = open(data->filename, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -34,36 +34,36 @@ int	get_data_map(t_data **data)
 	return (close(fd), 0);
 }
 
-int	get_texture(t_data **data, char *line)
+int	get_texture(t_data *data, char *line)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
-		(*data)->d_map->no_texture = ft_strdup(ft_strtrim(&line[2], " "));
-		if ((*data)->d_map->no_texture == NULL)
+		data->d_map->no_texture = ft_strdup(ft_strtrim(&line[2], " "));
+		if (data->d_map->no_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	else if (ft_strncmp(line, "SO ", 3) == 0)
 	{
-		(*data)->d_map->so_texture = ft_strdup (ft_strtrim(&line[2], " "));
-		if ((*data)->d_map->so_texture == NULL)
+		data->d_map->so_texture = ft_strdup (ft_strtrim(&line[2], " "));
+		if (data->d_map->so_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	else if (ft_strncmp(line, "EA ", 3) == 0)
 	{
-		(*data)->d_map->ea_texture = ft_strdup (ft_strtrim(&line[2], " "));
-		if ((*data)->d_map->ea_texture == NULL)
+		data->d_map->ea_texture = ft_strdup (ft_strtrim(&line[2], " "));
+		if (data->d_map->ea_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	else if (ft_strncmp(line, "WE ", 3) == 0)
 	{
-		(*data)->d_map->we_texture = ft_strdup (ft_strtrim(&line[2], " "));
-		if ((*data)->d_map->we_texture == NULL)
+		data->d_map->we_texture = ft_strdup (ft_strtrim(&line[2], " "));
+		if (data->d_map->we_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	return (0);
 }
 
-int	get_rgb(t_data **data, char *line, int i, char **tmp)
+int	get_rgb(t_data *data, char *line, int i, char **tmp)
 {
 	if (ft_strncmp(line, "F ", 2) == 0)
 	{
@@ -73,7 +73,7 @@ int	get_rgb(t_data **data, char *line, int i, char **tmp)
 		if (check_rgb(tmp) != 0)
 			return (ft_strtab_free(tmp), ft_putendl_fd(ERR_NRGB, 2), 1);
 		while (tmp[++i])
-			(*data)->d_map->f_rgb[i] = ft_atoi(tmp[i]);
+			data->d_map->f_rgb[i] = ft_atoi(tmp[i]);
 		free(tmp);
 	}
 	else if (ft_strncmp(line, "C ", 2) == 0)
@@ -85,7 +85,7 @@ int	get_rgb(t_data **data, char *line, int i, char **tmp)
 		if (check_rgb(tmp) != 0)
 			return (ft_strtab_free(tmp), ft_putendl_fd(ERR_NRGB, 2), 1);
 		while (tmp[++i])
-			(*data)->d_map->c_rgb[i] = ft_atoi(tmp[i]);
+			data->d_map->c_rgb[i] = ft_atoi(tmp[i]);
 		free(tmp);
 	}
 	return (0);
@@ -102,22 +102,22 @@ int	check_rgb(char **tmp)
 	return (0);
 }
 
-int	check_data(t_data **data, int err)
+int	check_data(t_data *data, int err)
 {
 	int	i;
 
 	i = -1;
-	if ((*data)->d_map->no_texture == NULL)
+	if (data->d_map->no_texture == NULL)
 		return (check_data_error("Error: North texture is missing", err), 1);
-	else if ((*data)->d_map->so_texture == NULL)
+	else if (data->d_map->so_texture == NULL)
 		return (check_data_error("Error: South texture is missing", err), 1);
-	else if ((*data)->d_map->we_texture == NULL)
+	else if (data->d_map->we_texture == NULL)
 		return (check_data_error("Error: West texture is missing", err), 1);
-	else if ((*data)->d_map->ea_texture == NULL)
+	else if (data->d_map->ea_texture == NULL)
 		return (check_data_error("Error: East texture is missing", err), 1);
 	while (++i < 3)
 	{
-		if ((*data)->d_map->c_rgb[i] == -1 || (*data)->d_map->f_rgb[i] == -1)
+		if (data->d_map->c_rgb[i] == -1 || data->d_map->f_rgb[i] == -1)
 			return (1);
 	}
 	return (0);

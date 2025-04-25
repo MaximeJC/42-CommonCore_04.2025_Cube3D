@@ -8,24 +8,51 @@
 # include <fcntl.h>
 # include <math.h>
 
-//Map struct
+//* Global data struct
+typedef struct s_data
+{
+	char				*filename;
+	void				*mlx_ptr;
+	void				*mlx_win;
+	struct s_map		*d_map;
+	struct s_player		*player;
+}						t_data;
+
+//* Map struct
 typedef struct s_map
 {
 	char	*no_texture;
 	char	*so_texture;
 	char	*we_texture;
 	char	*ea_texture;
-	int		f_rgb[4];
-	int		c_rgb[4];
+	void	*no_img;
+	void	*so_img;
+	void	*we_img;
+	void	*ea_img;
+	int		f_rgb[3];
+	int		c_rgb[3];
+	int		height;
+	int		width;
 	char	**map;
 }			t_map;
 
-//Global data struct
-typedef struct s_data
+//* Player struct
+typedef struct s_player
 {
-	char	*filename;
-	t_map	*d_map;
-}			t_data;
+	float	pos_x;
+	float	pos_y;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
+}			t_player;
+
+typedef struct s_raycast
+{
+	float	camera_x;
+	float	ray_dir_x;
+	float	ray_dir_y;
+}			t_raycast;
 
 //* Error messages - Global
 # define ERR_MALLOC "Error: Malloc Error"
@@ -62,15 +89,28 @@ typedef struct s_data
 // -> check_mapfile
 int		check_mapfile(char *str);
 // -> get_data_map
-int		get_data_map(t_data **data);
+int		get_data_map(t_data *data);
 // -> get_map
-int		get_map(t_data **data, char **line, int fd);
+int		get_map(t_data *data, char **line, int fd);
 // -> get_data-map_utils
 int		check_empty_line(char *line, int err);
 void	check_data_error(char *sterr, int err);
 
+//* struct
+// -> struct_data
+int		init_data(t_data *data, char *file);
+void	clear_data(t_data *data);
+// -> struct_map
+int		init_map(t_data *data);
+void	clear_map(t_data *data);
+// -> struct_player
+int		init_player(t_data *data);
+void	clear_player(t_data *data);
+// -> struct_raycast
+int		init_raycast(t_raycast *ray);
+
 //* utils
 // -> error_handler
-void	error_handler(char *msg, t_data **data, int exit);
+void	error_handler(char *msg, t_data *data, int exit);
 
 #endif
