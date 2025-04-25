@@ -10,6 +10,9 @@
 
 //* Error messages - Map check
 # define ERR_ARGS "Usage: ./cub3D <map.cub>"
+# define ERR_MAP_FILE "Error: Invalid file format. Expected a '.cub' file."
+# define ERR_TM_ARG "Error: Too many arguments. Usage: ./your_program map_file.cun"
+# define ERR_NE_ARG "Error: Not enough arguments. Usage: ./your_program map_file.cun"
 
 //* Error messages - MLX
 # define ERR_MLXD_INIT "mlx_data init error"
@@ -31,5 +34,10 @@
 # define KEY_LEFT 65361
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
+
+//* parsing
+// -> check_mapfile
+
+int check_mapfile(char *str);
 
 #endif
