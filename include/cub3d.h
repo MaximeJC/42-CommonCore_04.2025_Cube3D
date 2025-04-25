@@ -9,23 +9,23 @@
 # include <math.h>
 
 //Map struct
-	typedef struct s_map
-	{
-		char	*no_texture;
-		char	*so_texture;
-		char	*we_texture;
-		char	*ea_texture;
-		int		f_rgb[4];
-		int		c_rgb[4];
-		char	**map;
-	}			t_map;
+typedef struct s_map
+{
+	char	*no_texture;
+	char	*so_texture;
+	char	*we_texture;
+	char	*ea_texture;
+	int		f_rgb[4];
+	int		c_rgb[4];
+	char	**map;
+}			t_map;
 
 //Global data struct
-	typedef struct s_data
-	{
-		char	*filename;
-		t_map	*d_map;
-	}			t_data;
+typedef struct s_data
+{
+	char	*filename;
+	t_map	*d_map;
+}			t_data;
 
 //* Error messages - Global
 # define ERR_MALLOC "Error: Malloc Error"
@@ -60,17 +60,17 @@
 
 //* parsing
 // -> check_mapfile
-int check_mapfile(char *str);
+int		check_mapfile(char *str);
 // -> get_data_map
-int get_data_map(t_data **data);
+int		get_data_map(t_data **data);
 // -> get_map
-int get_map(t_data **data, char **line, int fd);
+int		get_map(t_data **data, char **line, int fd);
 // -> get_data-map_utils
-int check_empty_line(char *line, int err);
-void check_data_error(char *sterr, int err);
+int		check_empty_line(char *line, int err);
+void	check_data_error(char *sterr, int err);
 
 //* utils
 // -> error_handler
-void error_handler(char *msg, t_data **data, int exit);
+void	error_handler(char *msg, t_data **data, int exit);
 
 #endif

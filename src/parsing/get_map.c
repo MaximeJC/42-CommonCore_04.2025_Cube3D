@@ -1,13 +1,13 @@
 #include "cub3d.h"
 
-char 	*ft_strdup_no_null(const char *src, size_t size);
+char	*ft_strdup_no_null(const char *src, size_t size);
 char	**ft_lst_to_maptab(t_list *lst, size_t size);
 int		get_max_len(t_list *l_map);
 
-int get_map(t_data **data, char **line, int fd)
+int	get_map(t_data **data, char **line, int fd)
 {
-	int i;
-	t_list *l_map;
+	int		i;
+	t_list	*l_map;
 
 	i = 0;
 	l_map = NULL;
@@ -25,22 +25,23 @@ int get_map(t_data **data, char **line, int fd)
 		*line = get_next_line(fd);
 	}
 	(*data)->d_map->map = ft_lst_to_maptab(l_map, get_max_len(l_map));
-	return(0);
+	return (0);
 }
 
-int get_max_len(t_list *l_map)
+int	get_max_len(t_list *l_map)
 {
-	t_list *current;
-	size_t max_size;
+	t_list	*current;
+	size_t	max_size;
 
 	current = l_map;
 	max_size = 0;
-	while(current)
+	while (current)
 	{
-		max_size = ft_max(ft_strlen(ft_strtrim((char *)current->content, "\n")), max_size);
+		max_size = ft_max(ft_strlen(ft_strtrim((char *)current->content,
+						"\n")), max_size);
 		current = current->next;
 	}
-	return(max_size);
+	return (max_size);
 }
 
 char	**ft_lst_to_maptab(t_list *lst, size_t size)
@@ -70,10 +71,10 @@ char	**ft_lst_to_maptab(t_list *lst, size_t size)
 	return (str_tab);
 }
 
- char *ft_strdup_no_null(const char *src, size_t size)
+char	*ft_strdup_no_null(const char *src, size_t size)
 {
 	size_t	i;
-	char * dest;
+	char	*dest;
 
 	dest = NULL;
 	dest = malloc((size + 1) * sizeof(char));
