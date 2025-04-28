@@ -66,6 +66,8 @@ typedef struct s_raycast
 # define ERR_NRGB "Error: Invalid color format. Use RGB format as 'R,G,B'."
 # define ERR_CHAR "Error: Invalid character in map."
 # define ERR_WALL "Error: Wall not completed"
+# define ERR_TM_PLY "Error: Too many players. Usage: One player."
+# define ERR_NE_PLY "Error: Not enough players. Usage: One player."
 
 //* Error messages - MLX
 # define ERR_MLXD_INIT "mlx_data init error"
@@ -99,7 +101,7 @@ int		get_map(t_data *data, char **line, int fd);
 int		check_empty_line(char *line, int err);
 void	check_data_error(char *sterr, int err);
 // -> check_wall
-int	check_wall(t_data *data);
+int	check_wall_and_ground(t_data *data);
 
 //* struct
 // -> struct_data
