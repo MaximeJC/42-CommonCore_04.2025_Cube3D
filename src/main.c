@@ -12,7 +12,6 @@ int	check_arg(int argc)
 int	main(int argc, char const *argv[])
 {
 	t_data	data;
-	int i = 0;
 
 	if (check_arg(argc) || check_mapfile((char *)argv[1]))
 		return (1);
@@ -22,12 +21,6 @@ int	main(int argc, char const *argv[])
 		return (clear_data(&data), 1);
 	if (check_wall_and_ground(&data) != 0)
 		return (clear_data(&data), 1);
-
-	while(data.d_map->map[i])
-	{
-		ft_putendl_fd(data.d_map->map[i], 1);
-		i++;
-	}
+	ft_printf("map is valid !!!!!!\n");
 	return (clear_data(&data), 0);
-
 }

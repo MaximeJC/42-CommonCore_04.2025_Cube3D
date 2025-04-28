@@ -5,7 +5,7 @@ int	get_rgb(t_data *data, char *line, int i, char **tmp);
 int	check_rgb(char **tmp);
 int	check_data(t_data *data, int err);
 
-int	get_data_map(t_data *data,int fd)
+int	get_data_map(t_data *data, int fd)
 {
 	int		i;
 	int		err;

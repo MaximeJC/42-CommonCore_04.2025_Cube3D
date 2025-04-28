@@ -39,9 +39,9 @@ int	get_max_len(t_list *l_map)
 	max_size = 0;
 	while (current)
 	{
-		tmp_str = ft_strtrim((char *)current->content,"\n");
+		tmp_str = ft_strtrim((char *)current->content, "\n");
 		if (!tmp_str)
-			return(error_handler(ERR_MALLOC, NULL, 0), -1);
+			return (error_handler(ERR_MALLOC, NULL, 0), -1);
 		max_size = ft_max(ft_strlen(tmp_str), max_size);
 		current = current->next;
 		free(tmp_str);
@@ -59,7 +59,7 @@ char	**ft_lst_to_maptab(t_list *lst, int size)
 	el = lst;
 	i = 0;
 	if (size == -1)
-		return(NULL);
+		return (NULL);
 	str_tab = ft_calloc(ft_lstsize(lst) + 1, sizeof(char *));
 	if (str_tab)
 	{

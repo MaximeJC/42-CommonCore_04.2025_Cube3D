@@ -101,7 +101,10 @@ int		get_map(t_data *data, char **line, int fd);
 int		check_empty_line(char *line, int err);
 void	check_data_error(char *sterr, int err);
 // -> check_wall
-int	check_wall_and_ground(t_data *data);
+int		check_wall_and_ground(t_data *data);
+// -> check_wall_utils
+char	**ft_strtab_dup(char **tab);
+void	ft_print_tab(char **tab);
 
 //* struct
 // -> struct_data
