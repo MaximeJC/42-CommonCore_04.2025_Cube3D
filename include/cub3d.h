@@ -105,7 +105,7 @@ int		check_wall_and_ground(t_data *data);
 // -> check_wall_utils
 char	**ft_strtab_dup(char **tab);
 void	ft_print_tab(char **tab);
-void get_size_map(t_data *data);
+void	get_size_map(t_data *data);
 
 //* struct
 // -> struct_data

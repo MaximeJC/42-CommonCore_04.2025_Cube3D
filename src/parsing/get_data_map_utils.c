@@ -18,10 +18,10 @@ void	check_data_error(char *sterr, int err)
 		error_handler(sterr, NULL, 0);
 }
 
-void get_size_map(t_data *data)
+void	get_size_map(t_data *data)
 {
-	int i;
-	size_t len;
+	int		i;
+	size_t	len;
 
 	i = 0;
 	len = 0;
