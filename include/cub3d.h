@@ -55,14 +55,19 @@ typedef struct s_raycast
 }			t_raycast;
 
 //* Error messages - Global
-# define ERR_MALLOC "Error: Malloc Error"
+# define ERR_MALLOC "Error\n Malloc Error"
 
 //* Error messages - Map check
 # define ERR_ARGS "Usage: ./cub3D <map.cub>"
-# define ERR_MAP_FILE "Error: Invalid file format. Expected a '.cub' file."
-# define ERR_TM_ARG "Error: Too many arguments. Usage: ./program map_file.cun"
-# define ERR_NE_ARG "Error: Not enough arguments. Usage: ./program map_file.cun"
-# define ERR_NRGB "Error: Invalid color format. Use RGB format as 'R,G,B'."
+# define ERR_NAME_FILE "Error\n Invalid file. Can't open file."
+# define ERR_MAP_FILE "Error\n Invalid file format. Expected a '.cub' file."
+# define ERR_TM_AR "Error\n Too many arguments. Usage: ./program map_file.cub"
+# define ERR_NE_AR "Error\n Not enough arguments. Usage: ./program map_file.cub"
+# define ERR_NRGB "Error\n Invalid color format. Use RGB format as 'R,G,B'."
+# define ERR_CHAR "Error\n Invalid character in map."
+# define ERR_WALL "Error\n Wall not completed"
+# define ERR_TM_PLY "Error\n Too many players. Usage: One player."
+# define ERR_NE_PLY "Error\n Not enough players. Usage: One player."
 
 //* Error messages - MLX
 # define ERR_MLXD_INIT "mlx_data init error"
@@ -89,12 +94,19 @@ typedef struct s_raycast
 // -> check_mapfile
 int		check_mapfile(char *str);
 // -> get_data_map
-int		get_data_map(t_data *data);
+int		get_data_map(t_data *data, int fd);
 // -> get_map
 int		get_map(t_data *data, char **line, int fd);
 // -> get_data-map_utils
 int		check_empty_line(char *line, int err);
 void	check_data_error(char *sterr, int err);
+// -> check_wall
+int		check_wall_and_ground(t_data *data);
+// -> check_wall_utils
+char	**ft_strtab_dup(char **tab);
+void	ft_print_tab(char **tab);
+void	get_size_map(t_data *data);
+int		check_carac(char **c_map, t_data *data);
 
 //* struct
 // -> struct_data
