@@ -106,6 +106,7 @@ int		check_wall_and_ground(t_data *data);
 char	**ft_strtab_dup(char **tab);
 void	ft_print_tab(char **tab);
 void	get_size_map(t_data *data);
+int		check_carac(char **c_map, t_data *data);
 
 //* struct
 // -> struct_data
