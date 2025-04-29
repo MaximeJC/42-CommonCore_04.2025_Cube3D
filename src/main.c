@@ -3,9 +3,9 @@
 int	check_arg(int argc)
 {
 	if (argc > 2)
-		return (ft_putendl_fd(ERR_TM_ARG, 2), 1);
+		return (ft_putendl_fd(ERR_TM_AR, 2), 1);
 	else if (argc < 2)
-		return (ft_putendl_fd(ERR_NE_ARG, 2), 1);
+		return (ft_putendl_fd(ERR_NE_AR, 2), 1);
 	return (0);
 }
 

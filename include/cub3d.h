@@ -55,19 +55,19 @@ typedef struct s_raycast
 }			t_raycast;
 
 //* Error messages - Global
-# define ERR_MALLOC "Error: Malloc Error"
+# define ERR_MALLOC "Error\n Malloc Error"
 
 //* Error messages - Map check
 # define ERR_ARGS "Usage: ./cub3D <map.cub>"
-# define ERR_NAME_FILE "Error: Invalid file. Can't open file."
-# define ERR_MAP_FILE "Error: Invalid file format. Expected a '.cub' file."
-# define ERR_TM_ARG "Error: Too many arguments. Usage: ./program map_file.cun"
-# define ERR_NE_ARG "Error: Not enough arguments. Usage: ./program map_file.cun"
-# define ERR_NRGB "Error: Invalid color format. Use RGB format as 'R,G,B'."
-# define ERR_CHAR "Error: Invalid character in map."
-# define ERR_WALL "Error: Wall not completed"
-# define ERR_TM_PLY "Error: Too many players. Usage: One player."
-# define ERR_NE_PLY "Error: Not enough players. Usage: One player."
+# define ERR_NAME_FILE "Error\n Invalid file. Can't open file."
+# define ERR_MAP_FILE "Error\n Invalid file format. Expected a '.cub' file."
+# define ERR_TM_AR "Error\n Too many arguments. Usage: ./program map_file.cub"
+# define ERR_NE_AR "Error\n Not enough arguments. Usage: ./program map_file.cub"
+# define ERR_NRGB "Error\n Invalid color format. Use RGB format as 'R,G,B'."
+# define ERR_CHAR "Error\n Invalid character in map."
+# define ERR_WALL "Error\n Wall not completed"
+# define ERR_TM_PLY "Error\n Too many players. Usage: One player."
+# define ERR_NE_PLY "Error\n Not enough players. Usage: One player."
 
 //* Error messages - MLX
 # define ERR_MLXD_INIT "mlx_data init error"
