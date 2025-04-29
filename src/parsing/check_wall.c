@@ -25,21 +25,21 @@ int	find_player_pose(char **c_map, t_data *data)
 	int	j;
 	int	p_nbr;
 
-	i = 0;
+	i = -1;
 	p_nbr = 0;
-	while (c_map[i])
+	while (c_map[++i])
 	{
-		j = 0;
-		while (c_map[i][j])
+		j = -1;
+		while (c_map[i][++j])
 		{
+			if (!ft_isinset(c_map[i][j], " 10NSEW"))
+				return (error_handler(ERR_CHAR, NULL, 0), 1);
 			if (ft_isinset(c_map[i][j], "NSEW") && p_nbr == 0)
 			{
 				p_nbr++;
 				set_player_data(c_map[i][j], data, i, j);
 			}
-			j++;
 		}
-		i++;
 	}
 	if (p_nbr > 1)
 		return (error_handler(ERR_TM_PLY, NULL, 0), 1);
