@@ -9,6 +9,7 @@ int	check_wall_and_ground(t_data *data)
 {
 	char	**c_map;
 
+	get_size_map(data);
 	c_map = ft_strtab_dup(data->d_map->map);
 	if (!c_map)
 		return (error_handler(ERR_MALLOC, NULL, 0), 1);
