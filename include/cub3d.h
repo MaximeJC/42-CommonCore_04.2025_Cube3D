@@ -58,7 +58,7 @@ typedef struct s_raycast
 # define ERR_MALLOC "Error\nMalloc Error"
 
 //* Error messages - Map check
-# define ERR_ARGS "Usage: ./cub3D <map.cub>"
+# define ERR_ARGS "Error\nUsage: ./cub3D <map.cub>"
 # define ERR_NAME_FILE "Error\nInvalid file. Can't open file."
 # define ERR_MAP_FILE "Error\nInvalid file format. Expected a '.cub' file."
 # define ERR_TM_AR "Error\nToo many arguments. Usage: ./program map_file.cub"
@@ -70,9 +70,9 @@ typedef struct s_raycast
 # define ERR_NE_PLY "Error\nNot enough players. Usage: One player."
 
 //* Error messages - MLX
-# define ERR_MLX_INIT "mlx init error"
-# define ERR_WIN_INIT "Window init error"
-# define ERR_IMG_INIT "Sprites init error"
+# define ERR_MLX_INIT "Error\nMlx init error"
+# define ERR_WIN_INIT "Error\nWindow init error"
+# define ERR_IMG_INIT "Error\nSprites init error"
 
 //* Functions' shortcut
 # define MLX_IMG_WIN mlx_put_image_to_window
