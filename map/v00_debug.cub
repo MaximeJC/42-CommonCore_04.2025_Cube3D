@@ -1,0 +1,15 @@
+NO ./map/north_debug.xpm
+SO ./map/south_debug.xpm
+WE ./map/west_debug.xpm
+EA ./map/east_debug.xpm
+
+F 220,100,0
+C 225,30,0
+
+1111111
+1000001
+1000001
+1001001
+1000001
+100N001
+1111111
