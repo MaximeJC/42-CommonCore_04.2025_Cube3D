@@ -23,4 +23,6 @@ void	mlx_win_init(t_data *data)
 	if (!data->d_map->no_text_mlx || !data->d_map->so_text_mlx
 		|| !data->d_map->ea_text_mlx || !data->d_map->we_text_mlx)
 		return (error_handler(ERR_IMG_INIT, data, 1));
+	if (init_img(data))
+		return (error_handler(ERR_IMG_SCREEN, data, 1));
 }
