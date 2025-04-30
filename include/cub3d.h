@@ -39,8 +39,8 @@ typedef struct s_map
 	void	*so_text_mlx;
 	void	*we_text_mlx;
 	void	*ea_text_mlx;
-	int		f_rgb[3];
-	int		c_rgb[3];
+	int		f_rgb;
+	int		c_rgb;
 	int		height;
 	int		width;
 	char	**map;
