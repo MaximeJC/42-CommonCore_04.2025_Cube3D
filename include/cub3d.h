@@ -70,7 +70,6 @@ typedef struct s_raycast
 # define ERR_NE_PLY "Error\n Not enough players. Usage: One player."
 
 //* Error messages - MLX
-# define ERR_MLXD_INIT "mlx_data init error"
 # define ERR_MLX_INIT "mlx init error"
 # define ERR_WIN_INIT "Window init error"
 # define ERR_IMG_INIT "Sprites init error"
@@ -78,6 +77,11 @@ typedef struct s_raycast
 //* Functions' shortcut
 # define MLX_IMG_WIN mlx_put_image_to_window
 # define MLX_IMG_INIT mlx_xpm_file_to_image
+
+//* Game parameters
+# define WIDTH 1920
+# define HEIGHT 1000
+# define IMG_SIZE 512
 
 //* Keyboard keys
 # define KEY_ESC 65307
@@ -89,6 +93,10 @@ typedef struct s_raycast
 # define KEY_LEFT 65361
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
+
+//* game_engine
+// -> mlx_manegement
+void	mlx_win_init(t_data *data);
 
 //* parsing
 // -> check_mapfile

@@ -22,6 +22,7 @@ int	main(int argc, char const *argv[])
 	if (check_wall_and_ground(&data) != 0)
 		return (clear_data(&data), 1);
 	ft_print_tab(data.d_map->map);
-	ft_printf("map is valid !!!!!!\n");
+	mlx_win_init(&data);
+	ft_printf("Mlx initialized\n");
 	return (clear_data(&data), 0);
 }
