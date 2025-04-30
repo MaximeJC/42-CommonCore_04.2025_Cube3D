@@ -108,13 +108,13 @@ int	check_data(t_data *data, int err)
 
 	i = -1;
 	if (data->d_map->no_texture == NULL)
-		return (check_data_error("Error\n North texture is missing", err), 1);
+		return (check_data_error("Error\nNorth texture is missing", err), 1);
 	else if (data->d_map->so_texture == NULL)
-		return (check_data_error("Error\n South texture is missing", err), 1);
+		return (check_data_error("Error\nSouth texture is missing", err), 1);
 	else if (data->d_map->we_texture == NULL)
-		return (check_data_error("Error\n West texture is missing", err), 1);
+		return (check_data_error("Error\nWest texture is missing", err), 1);
 	else if (data->d_map->ea_texture == NULL)
-		return (check_data_error("Error\n East texture is missing", err), 1);
+		return (check_data_error("Error\nEast texture is missing", err), 1);
 	while (++i < 3)
 	{
 		if (data->d_map->c_rgb[i] == -1 || data->d_map->f_rgb[i] == -1)
