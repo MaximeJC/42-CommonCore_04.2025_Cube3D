@@ -24,5 +24,6 @@ int	main(int argc, char const *argv[])
 	ft_print_tab(data.d_map->map);
 	mlx_win_init(&data);
 	ft_printf("Mlx initialized\n");
+	usleep(3000000); // 3 sec
 	return (clear_data(&data), 0);
 }
