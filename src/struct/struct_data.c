@@ -12,12 +12,12 @@ int	init_data(t_data *data, char *file)
 
 void	clear_data(t_data *data)
 {
-	if (data->mlx_win)
-		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-	if (data->mlx_ptr)
-		mlx_destroy_display(data->mlx_ptr);
 	if (data->d_map)
 		clear_map(data);
 	if (data->player)
 		clear_player(data);
+	if (data->mlx_win)
+		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+	if (data->mlx_ptr)
+		mlx_destroy_display(data->mlx_ptr);
 }
