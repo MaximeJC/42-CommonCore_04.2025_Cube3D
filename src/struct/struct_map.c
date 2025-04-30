@@ -5,7 +5,7 @@ int	init_map(t_data *data)
 	int	i;
 
 	i = -1;
-	data->d_map = malloc(sizeof(t_map));
+	data->d_map = ft_calloc(1, sizeof(t_map));
 	if (data->d_map == NULL)
 		return (error_handler(ERR_MALLOC, NULL, 0), 1);
 	data->d_map->no_texture = NULL;
