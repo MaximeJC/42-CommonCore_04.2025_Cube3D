@@ -1,10 +1,10 @@
-NO ./map/north_debug.xpm
-SO ./map/south_debug.xpm
-WE ./map/west_debug.xpm
-EA ./map/east_debug.xpm
+NO ./textures/north_debug.xpm
+SO ./textures/south_debug.xpm
+WE ./textures/west_debug.xpm
+EA ./textures/east_debug.xpm
 
-F 220,100,0
-C 225,30,0
+F 0,0,0
+C 255,255,255
 
 1111111
 1000001
