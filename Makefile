@@ -22,7 +22,7 @@ PARSE		=	check_mapfile get_data_map get_map get_data_map_utils \
 				check_wall check_wall_utils \
 
 STRUCT_DIR	=	struct/
-STRUCT		=	struct_data struct_map struct_player struct_raycast \
+STRUCT		=	struct_data struct_img struct_map struct_player struct_raycast \
 
 UTILS_DIR	=	utils/
 UTILS		=	error_handler \

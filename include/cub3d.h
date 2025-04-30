@@ -14,9 +14,19 @@ typedef struct s_data
 	char				*filename;
 	void				*mlx_ptr;
 	void				*mlx_win;
+	struct s_img		*img;
 	struct s_map		*d_map;
 	struct s_player		*player;
 }						t_data;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*img_addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}			t_img;
 
 //* Map struct
 typedef struct s_map
@@ -120,6 +130,9 @@ int		check_carac(char **c_map, t_data *data);
 // -> struct_data
 int		init_data(t_data *data, char *file);
 void	clear_data(t_data *data);
+// -> struct img
+int		init_img(t_data *data);
+void	clear_img(t_data *data);
 // -> struct_map
 int		init_map(t_data *data);
 void	clear_map(t_data *data);
