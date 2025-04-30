@@ -25,10 +25,10 @@ typedef struct s_map
 	char	*so_texture;
 	char	*we_texture;
 	char	*ea_texture;
-	void	*no_img;
-	void	*so_img;
-	void	*we_img;
-	void	*ea_img;
+	void	*no_text_mlx;
+	void	*so_text_mlx;
+	void	*we_text_mlx;
+	void	*ea_text_mlx;
 	int		f_rgb[3];
 	int		c_rgb[3];
 	int		height;
