@@ -83,6 +83,7 @@ typedef struct s_raycast
 # define ERR_MLX_INIT "Error\nMlx init error"
 # define ERR_WIN_INIT "Error\nWindow init error"
 # define ERR_IMG_INIT "Error\nSprites init error"
+# define ERR_IMG_SCREEN "Error\nScreen img init error"
 
 //* Functions' shortcut
 # define MLX_IMG_WIN mlx_put_image_to_window
@@ -105,6 +106,8 @@ typedef struct s_raycast
 # define KEY_RIGHT 65363
 
 //* game_engine
+// -> display
+void	display_once(t_data *data);
 // -> mlx_manegement
 void	mlx_win_init(t_data *data);
 
