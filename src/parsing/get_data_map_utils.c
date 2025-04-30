@@ -35,7 +35,6 @@ void	get_size_map(t_data *data)
 		i++;
 	}
 	data->d_map->width = len;
-	ft_printf("h = %d, l = %d", data->d_map->height, data->d_map->width);
 }
 
 int	check_carac(char **c_map, t_data *data)
@@ -52,7 +51,7 @@ int	check_carac(char **c_map, t_data *data)
 		while (c_map[i][++j])
 		{
 			f_err = check_around(c_map, data, i, j);
-			if (f_err >= 4)
+			if (f_err >= 1)
 				return (error_handler(ERR_CHAR, NULL, 0), 1);
 		}
 	}
@@ -67,23 +66,23 @@ int	check_around(char **c_map, t_data *data, int i, int j)
 	if (!ft_isinset(c_map[i][j], " 1") && i == 0)
 		f_err++;
 	else if (!ft_isinset(c_map[i][j], " 1")
-		&& ft_isinset(c_map[i - 1][j], " 1\0"))
+		&& ft_isinset(c_map[i - 1][j], " \0"))
 		f_err++;
 	if (!ft_isinset(c_map[i][j], " 1")
 		&& i == data->d_map->height - 1)
 		f_err++;
 	else if (!ft_isinset(c_map[i][j], " 1")
-		&& ft_isinset(c_map[i + 1][j], " 1\0"))
+		&& ft_isinset(c_map[i + 1][j], " \0"))
 		f_err++;
 	if (!ft_isinset(c_map[i][j], " 1") && j == 0)
 		f_err++;
 	else if (!ft_isinset(c_map[i][j], " 1")
-		&& ft_isinset(c_map[i][j - 1], " 1\0"))
+		&& ft_isinset(c_map[i][j - 1], " \0"))
 		f_err++;
 	if (!ft_isinset(c_map[i][j], " 1") && j == data->d_map->width - 1)
 		f_err++;
 	else if (!ft_isinset(c_map[i][j], " 1")
-		&& ft_isinset(c_map[i][j + 1], " 1\0"))
+		&& ft_isinset(c_map[i][j + 1], " \0"))
 		f_err++;
 	return (f_err);
 }

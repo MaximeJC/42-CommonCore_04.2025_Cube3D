@@ -15,9 +15,9 @@ int	check_wall_and_ground(t_data *data)
 		return (error_handler(ERR_MALLOC, NULL, 0), 1);
 	if (find_player_pose(c_map, data) != 0)
 		return (ft_strtab_free(c_map), 1);
-	if (check_carac(c_map, data) != 0)
-		return (ft_strtab_free(c_map), 1);
 	if (recursive_check(c_map, data->player->pos_y, data->player->pos_x) != 0)
+		return (ft_strtab_free(c_map), 1);
+	if (check_carac(c_map, data) != 0)
 		return (ft_strtab_free(c_map), 1);
 	return (ft_strtab_free(c_map), 0);
 }
