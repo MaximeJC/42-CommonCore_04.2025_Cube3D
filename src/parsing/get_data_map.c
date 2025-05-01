@@ -38,25 +38,25 @@ int	get_texture(t_data *data, char *line)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
-		data->d_map->no_texture = ft_strtrim(&line[2], " ");
+		data->d_map->no_texture = ft_strtrim(&line[2], "  \n");
 		if (data->d_map->no_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	else if (ft_strncmp(line, "SO ", 3) == 0)
 	{
-		data->d_map->so_texture = ft_strtrim(&line[2], " ");
+		data->d_map->so_texture = ft_strtrim(&line[2], " \n");
 		if (data->d_map->so_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	else if (ft_strncmp(line, "EA ", 3) == 0)
 	{
-		data->d_map->ea_texture = ft_strtrim(&line[2], " ");
+		data->d_map->ea_texture = ft_strtrim(&line[2], " \n");
 		if (data->d_map->ea_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	else if (ft_strncmp(line, "WE ", 3) == 0)
 	{
-		data->d_map->we_texture = ft_strtrim(&line[2], " ");
+		data->d_map->we_texture = ft_strtrim(&line[2], " \n");
 		if (data->d_map->we_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
@@ -72,8 +72,8 @@ int	get_rgb(t_data *data, char *line, int i, char **tmp)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 		if (check_rgb(tmp) != 0)
 			return (ft_strtab_free(tmp), ft_putendl_fd(ERR_NRGB, 2), 1);
-		while (tmp[++i])
-			data->d_map->f_rgb[i] = ft_atoi(tmp[i]);
+		data->d_map->f_rgb = create_rgb(ft_atoi(tmp[0]),
+				ft_atoi(tmp[1]), ft_atoi(tmp[2]));
 		ft_strtab_free(tmp);
 	}
 	else if (ft_strncmp(line, "C ", 2) == 0)
@@ -84,8 +84,8 @@ int	get_rgb(t_data *data, char *line, int i, char **tmp)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 		if (check_rgb(tmp) != 0)
 			return (ft_strtab_free(tmp), ft_putendl_fd(ERR_NRGB, 2), 1);
-		while (tmp[++i])
-			data->d_map->c_rgb[i] = ft_atoi(tmp[i]);
+		data->d_map->c_rgb = create_rgb(ft_atoi(tmp[0]),
+				ft_atoi(tmp[1]), ft_atoi(tmp[2]));
 		ft_strtab_free(tmp);
 	}
 	return (0);
@@ -115,10 +115,7 @@ int	check_data(t_data *data, int err)
 		return (check_data_error("Error\n West texture is missing", err), 1);
 	else if (data->d_map->ea_texture == NULL)
 		return (check_data_error("Error\n East texture is missing", err), 1);
-	while (++i < 3)
-	{
-		if (data->d_map->c_rgb[i] == -1 || data->d_map->f_rgb[i] == -1)
-			return (1);
-	}
+	if (data->d_map->c_rgb == -1 || data->d_map->f_rgb == -1)
+		return (1);
 	return (0);
 }

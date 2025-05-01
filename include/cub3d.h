@@ -29,8 +29,8 @@ typedef struct s_map
 	void	*so_img;
 	void	*we_img;
 	void	*ea_img;
-	int		f_rgb[3];
-	int		c_rgb[3];
+	int		f_rgb;
+	int		c_rgb;
 	int		height;
 	int		width;
 	char	**map;
@@ -100,6 +100,7 @@ int		get_map(t_data *data, char **line, int fd);
 // -> get_data-map_utils
 int		check_empty_line(char *line, int err);
 void	check_data_error(char *sterr, int err);
+int		create_rgb(int r, int g, int b);
 // -> check_wall
 int		check_wall_and_ground(t_data *data);
 // -> check_wall_utils
