@@ -121,6 +121,7 @@ int		get_map(t_data *data, char **line, int fd);
 // -> get_data-map_utils
 int		check_empty_line(char *line, int err);
 void	check_data_error(char *sterr, int err);
+int		create_rgb(int r, int g, int b);
 // -> check_wall
 int		check_wall_and_ground(t_data *data);
 // -> check_wall_utils
