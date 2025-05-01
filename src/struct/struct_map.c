@@ -21,8 +21,8 @@ int	init_map(t_data *data)
 	data->d_map->height = 0;
 	while (++i < 3)
 	{
-		data->d_map->c_rgb[i] = -1;
-		data->d_map->f_rgb[i] = -1;
+		data->d_map->c_rgb = -1;
+		data->d_map->f_rgb = -1;
 	}
 	return (0);
 }
