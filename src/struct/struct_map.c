@@ -2,9 +2,6 @@
 
 int	init_map(t_data *data)
 {
-	int	i;
-
-	i = -1;
 	data->d_map = malloc(sizeof(t_map));
 	if (data->d_map == NULL)
 		return (error_handler(ERR_MALLOC, NULL, 0), 1);
@@ -19,11 +16,8 @@ int	init_map(t_data *data)
 	data->d_map->map = NULL;
 	data->d_map->width = 0;
 	data->d_map->height = 0;
-	while (++i < 3)
-	{
-		data->d_map->c_rgb = -1;
-		data->d_map->f_rgb = -1;
-	}
+	data->d_map->c_rgb = -1;
+	data->d_map->f_rgb = -1;
 	return (0);
 }
 
