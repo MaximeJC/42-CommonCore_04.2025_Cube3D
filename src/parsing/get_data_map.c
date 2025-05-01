@@ -38,25 +38,25 @@ int	get_texture(t_data *data, char *line)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
-		data->d_map->no_texture = ft_strtrim(&line[2], " ");
+		data->d_map->no_texture = ft_strtrim(&line[2], "  \n");
 		if (data->d_map->no_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	else if (ft_strncmp(line, "SO ", 3) == 0)
 	{
-		data->d_map->so_texture = ft_strtrim(&line[2], " ");
+		data->d_map->so_texture = ft_strtrim(&line[2], " \n");
 		if (data->d_map->so_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	else if (ft_strncmp(line, "EA ", 3) == 0)
 	{
-		data->d_map->ea_texture = ft_strtrim(&line[2], " ");
+		data->d_map->ea_texture = ft_strtrim(&line[2], " \n");
 		if (data->d_map->ea_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
 	else if (ft_strncmp(line, "WE ", 3) == 0)
 	{
-		data->d_map->we_texture = ft_strtrim(&line[2], " ");
+		data->d_map->we_texture = ft_strtrim(&line[2], " \n");
 		if (data->d_map->we_texture == NULL)
 			return (ft_putendl_fd(ERR_MALLOC, 2), 1);
 	}
