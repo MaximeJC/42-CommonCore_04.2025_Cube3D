@@ -14,9 +14,19 @@ typedef struct s_data
 	char				*filename;
 	void				*mlx_ptr;
 	void				*mlx_win;
+	struct s_img		*img;
 	struct s_map		*d_map;
 	struct s_player		*player;
 }						t_data;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*img_addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}			t_img;
 
 //* Map struct
 typedef struct s_map
@@ -25,10 +35,10 @@ typedef struct s_map
 	char	*so_texture;
 	char	*we_texture;
 	char	*ea_texture;
-	void	*no_img;
-	void	*so_img;
-	void	*we_img;
-	void	*ea_img;
+	void	*no_text_mlx;
+	void	*so_text_mlx;
+	void	*we_text_mlx;
+	void	*ea_text_mlx;
 	int		f_rgb;
 	int		c_rgb;
 	int		height;
@@ -55,29 +65,34 @@ typedef struct s_raycast
 }			t_raycast;
 
 //* Error messages - Global
-# define ERR_MALLOC "Error\n Malloc Error"
+# define ERR_MALLOC "Error\nMalloc Error"
 
 //* Error messages - Map check
-# define ERR_ARGS "Usage: ./cub3D <map.cub>"
-# define ERR_NAME_FILE "Error\n Invalid file. Can't open file."
-# define ERR_MAP_FILE "Error\n Invalid file format. Expected a '.cub' file."
-# define ERR_TM_AR "Error\n Too many arguments. Usage: ./program map_file.cub"
-# define ERR_NE_AR "Error\n Not enough arguments. Usage: ./program map_file.cub"
-# define ERR_NRGB "Error\n Invalid color format. Use RGB format as 'R,G,B'."
-# define ERR_CHAR "Error\n Invalid character in map."
-# define ERR_WALL "Error\n Wall not completed"
-# define ERR_TM_PLY "Error\n Too many players. Usage: One player."
-# define ERR_NE_PLY "Error\n Not enough players. Usage: One player."
+# define ERR_ARGS "Error\nUsage: ./cub3D <map.cub>"
+# define ERR_NAME_FILE "Error\nInvalid file. Can't open file."
+# define ERR_MAP_FILE "Error\nInvalid file format. Expected a '.cub' file."
+# define ERR_TM_AR "Error\nToo many arguments. Usage: ./program map_file.cub"
+# define ERR_NE_AR "Error\nNot enough arguments. Usage: ./program map_file.cub"
+# define ERR_NRGB "Error\nInvalid color format. Use RGB format as 'R,G,B'."
+# define ERR_CHAR "Error\nInvalid character in map."
+# define ERR_WALL "Error\nWall not completed"
+# define ERR_TM_PLY "Error\nToo many players. Usage: One player."
+# define ERR_NE_PLY "Error\nNot enough players. Usage: One player."
 
 //* Error messages - MLX
-# define ERR_MLXD_INIT "mlx_data init error"
-# define ERR_MLX_INIT "mlx init error"
-# define ERR_WIN_INIT "Window init error"
-# define ERR_IMG_INIT "Sprites init error"
+# define ERR_MLX_INIT "Error\nMlx init error"
+# define ERR_WIN_INIT "Error\nWindow init error"
+# define ERR_IMG_INIT "Error\nSprites init error"
+# define ERR_IMG_SCREEN "Error\nScreen img init error"
 
 //* Functions' shortcut
 # define MLX_IMG_WIN mlx_put_image_to_window
 # define MLX_IMG_INIT mlx_xpm_file_to_image
+
+//* Game parameters
+# define WIDTH 1920
+# define HEIGHT 1000
+# define IMG_SIZE 512
 
 //* Keyboard keys
 # define KEY_ESC 65307
@@ -89,6 +104,12 @@ typedef struct s_raycast
 # define KEY_LEFT 65361
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
+
+//* game_engine
+// -> display
+void	display_once(t_data *data);
+// -> mlx_manegement
+void	mlx_win_init(t_data *data);
 
 //* parsing
 // -> check_mapfile
@@ -113,6 +134,9 @@ int		check_carac(char **c_map, t_data *data);
 // -> struct_data
 int		init_data(t_data *data, char *file);
 void	clear_data(t_data *data);
+// -> struct img
+int		init_img(t_data *data);
+void	clear_img(t_data *data);
 // -> struct_map
 int		init_map(t_data *data);
 void	clear_map(t_data *data);

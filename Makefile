@@ -14,17 +14,21 @@ DFLAGS	= -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 #! Sources
 
+GAME_DIR	=	game_engine/
+GAME		=	display mlx_management \
+
 PARSE_DIR	=	parsing/
 PARSE		=	check_mapfile get_data_map get_map get_data_map_utils \
 				check_wall check_wall_utils \
 
 STRUCT_DIR	=	struct/
-STRUCT		=	struct_data struct_map struct_player struct_raycast \
+STRUCT		=	struct_data struct_img struct_map struct_player struct_raycast \
 
 UTILS_DIR	=	utils/
 UTILS		=	error_handler \
 
 SRC_FILES	=	main \
+				$(addprefix $(GAME_DIR), $(GAME)) \
 				$(addprefix $(PARSE_DIR), $(PARSE)) \
 				$(addprefix $(STRUCT_DIR), $(STRUCT)) \
 				$(addprefix $(UTILS_DIR), $(UTILS)) \
@@ -66,10 +70,10 @@ mlx:
 
 obj_mkdir:
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)$(GAME_DIR)
 	@mkdir -p $(OBJ_DIR)$(PARSE_DIR)
 	@mkdir -p $(OBJ_DIR)$(STRUCT_DIR)
 	@mkdir -p $(OBJ_DIR)$(UTILS_DIR)
-
 
 norm:
 	@norminette src/ include/ -o
