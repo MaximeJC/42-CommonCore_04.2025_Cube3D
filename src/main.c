@@ -25,6 +25,8 @@ int	main(int argc, char const *argv[])
 	mlx_win_init(&data);
 	ft_printf("Mlx initialized\n");
 	display_once(&data);
-	usleep(3000000); // 3 sec
+	mlx_hook(data.mlx_win, 17, 0, close_mlx, &data);
+	mlx_hook(data.mlx_win, 2, 1L << 0, esc_press, &data);
+	mlx_loop(data.mlx_ptr);
 	return (clear_data(&data), 0);
 }

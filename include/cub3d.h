@@ -110,6 +110,8 @@ typedef struct s_raycast
 void	display_once(t_data *data);
 // -> mlx_manegement
 void	mlx_win_init(t_data *data);
+int		close_mlx(t_data *data);
+int		esc_press(int keycode, t_data *data);
 
 //* parsing
 // -> check_mapfile
@@ -133,7 +135,7 @@ int		check_carac(char **c_map, t_data *data);
 //* struct
 // -> struct_data
 int		init_data(t_data *data, char *file);
-void	clear_data(t_data *data);
+int		clear_data(t_data *data);
 // -> struct img
 int		init_img(t_data *data);
 void	clear_img(t_data *data);

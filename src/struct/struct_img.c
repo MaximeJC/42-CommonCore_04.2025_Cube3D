@@ -9,7 +9,7 @@ int	init_img(t_data *data)
 	if (!data->img->img)
 		return (1);
 	data->img->img_addr = mlx_get_data_addr(data->img->img, &data->img->bpp,
-		&data->img->line_length, &data->img->endian);
+			&data->img->line_length, &data->img->endian);
 	if (!data->img->img_addr)
 		return (1);
 	return (0);
