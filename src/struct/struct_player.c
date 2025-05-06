@@ -9,8 +9,8 @@ int	init_player(t_data *data)
 	data->player->pos_y = 0;
 	data->player->dir_x = 0;
 	data->player->dir_y = 0;
-	data->player->plane_x = 0;
-	data->player->plane_y = 0;
+	data->player->plan_x = 0;
+	data->player->plan_y = 0;
 	return (0);
 }
 
