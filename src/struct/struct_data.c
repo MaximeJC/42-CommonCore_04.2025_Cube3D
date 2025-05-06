@@ -25,7 +25,9 @@ void	clear_data(t_data *data)
 		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
 	if (data->mlx_ptr)
 	{
+		mlx_loop_end(data->mlx_ptr);
 		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
 	}
+	return ;
 }

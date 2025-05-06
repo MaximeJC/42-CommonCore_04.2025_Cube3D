@@ -110,6 +110,8 @@ typedef struct s_raycast
 void	display_once(t_data *data);
 // -> mlx_manegement
 void	mlx_win_init(t_data *data);
+int		close_mlx(t_data *data);
+int		esc_press(int keycode, t_data *data);
 
 //* parsing
 // -> check_mapfile
