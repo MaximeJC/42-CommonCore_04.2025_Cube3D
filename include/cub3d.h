@@ -126,17 +126,18 @@ typedef struct s_raycast
 #define M_PI 3.14159265358979323846
 
 //* game_engine
+// -> cam_mouvement
+void	cam_mouvemenmt(t_data *data, double x, double y, double degres);
 // -> display
 void	display_once(t_data *data);
+// -> game_controls
+int		key_press(int keycode, t_data *data);
+int		mouse_move(int x, int y, t_data *data);
 // -> mlx_manegement
 void	mlx_win_init(t_data *data);
 int		close_mlx(t_data *data);
 int		esc_press(int keycode, t_data *data);
-// -> game_controls
-int		key_press(int keycode, t_data *data);
-int		mouse_move(int x, int y, t_data *data);
-// -> cam_mouvement
-void	cam_mouvemenmt(t_data *data, double x, double y, double degres);
+// -> raycasting
 
 //* parsing
 // -> check_mapfile
