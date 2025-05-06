@@ -32,10 +32,3 @@ int	close_mlx(t_data *data)
 	clear_data(data);
 	exit(0);
 }
-
-int	esc_press(int keycode, t_data *data)
-{
-	if (keycode == KEY_ESC)
-		close_mlx(data);
-	return (0);
-}
