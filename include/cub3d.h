@@ -50,12 +50,12 @@ typedef struct s_map
 //* Player struct
 typedef struct s_player
 {
-	float	pos_x;
-	float	pos_y;
-	float	dir_x;
-	float	dir_y;
-	float	plane_x;
-	float	plane_y;
+	double	pos_x;			//position x du joueur
+	double	pos_y;			//position y du joueur
+	double	dir_x;			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	double	dir_y;			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	double	plan_x;			//vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
+	double	plan_y;			//vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
 }			t_player;
 
 typedef struct	s_raycast
