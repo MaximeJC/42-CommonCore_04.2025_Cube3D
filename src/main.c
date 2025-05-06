@@ -21,6 +21,7 @@ int	main(int argc, char const *argv[])
 		return (clear_data(&data), 1);
 	if (check_wall_and_ground(&data) != 0)
 		return (clear_data(&data), 1);
+	init_raycast(&data);
 	mlx_win_init(&data);
 	display_once(&data);
 	mlx_hook(data.mlx_win, 17, 0, close_mlx, &data);
