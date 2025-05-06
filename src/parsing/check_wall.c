@@ -53,27 +53,27 @@ int	find_player_pose(char **c_map, t_data *data)
 
 void	set_player_data(char c, t_data *data, int y, int x)
 {
-	data->player->pos_x = x;
-	data->player->pos_y = y;
+	data->player->pos_x = x + 0.5;
+	data->player->pos_y = y + 0.5;
 	if (c == 'N')
 	{
-		data->player->dir_x = 0;
 		data->player->dir_y = -1;
+		data->player->plan_x = 0.66;
 	}
 	else if (c == 'S')
 	{
-		data->player->dir_x = 0;
 		data->player->dir_y = 1;
+		data->player->plan_x = -0.66;
 	}
 	else if (c == 'E')
 	{
 		data->player->dir_x = 1;
-		data->player->dir_y = 0;
+		data->player->plan_y = 0.66;
 	}
 	else if (c == 'W')
 	{
 		data->player->dir_x = -1;
-		data->player->dir_y = 0;
+		data->player->plan_y = -0.66;
 	}
 }
 

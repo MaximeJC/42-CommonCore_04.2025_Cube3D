@@ -21,9 +21,8 @@ int	main(int argc, char const *argv[])
 		return (clear_data(&data), 1);
 	if (check_wall_and_ground(&data) != 0)
 		return (clear_data(&data), 1);
-	ft_print_tab(data.d_map->map);
+	init_raycast(&data);
 	mlx_win_init(&data);
-	ft_printf("Mlx initialized\n");
 	display_once(&data);
 	mlx_hook(data.mlx_win, 17, 0, close_mlx, &data);
 	mlx_hook(data.mlx_win, 2, 1L << 0, esc_press, &data);

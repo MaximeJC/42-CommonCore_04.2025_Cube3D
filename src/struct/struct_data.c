@@ -6,6 +6,7 @@ int	init_data(t_data *data, char *file)
 	data->mlx_ptr = NULL;
 	data->mlx_win = NULL;
 	data->img = NULL;
+	data->ray = NULL;
 	if (init_map(data))
 		return (1);
 	return (init_player(data));
@@ -19,6 +20,8 @@ void	clear_data(t_data *data)
 		clear_map(data);
 	if (data->player)
 		clear_player(data);
+	if (data->ray)
+		clear_raycast(data);
 	if (data->img)
 		clear_img(data);
 	if (data->mlx_win)
