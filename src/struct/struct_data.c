@@ -11,10 +11,10 @@ int	init_data(t_data *data, char *file)
 	return (init_player(data));
 }
 
-int	clear_data(t_data *data)
+void	clear_data(t_data *data)
 {
 	if (!data)
-		return (0);
+		return ;
 	if (data->d_map)
 		clear_map(data);
 	if (data->player)
@@ -29,5 +29,5 @@ int	clear_data(t_data *data)
 		mlx_destroy_display(data->mlx_ptr);
 		free(data->mlx_ptr);
 	}
-	return (0);
+	return ;
 }
