@@ -58,7 +58,7 @@ typedef struct s_player
 	double	plan_y;			//vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
 }			t_player;
 
-typedef struct	s_raycast
+typedef struct s_raycast
 {
 	double	ray_dir_x;		//calcul de direction x du rayon
 	double	ray_dir_y;		//calcul de direction y du rayon
