@@ -109,6 +109,7 @@ typedef struct s_raycast
 # define WIDTH 1920
 # define HEIGHT 1000
 # define IMG_SIZE 512
+# define CAM_ROT_SPEED 1
 
 //* Keyboard keys
 # define KEY_ESC 65307
@@ -121,6 +122,9 @@ typedef struct s_raycast
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 
+//* defines PI
+#define M_PI 3.14159265358979323846
+
 //* game_engine
 // -> display
 void	display_once(t_data *data);
@@ -128,6 +132,11 @@ void	display_once(t_data *data);
 void	mlx_win_init(t_data *data);
 int		close_mlx(t_data *data);
 int		esc_press(int keycode, t_data *data);
+// -> game_controls
+int		key_press(int keycode, t_data *data);
+int		mouse_move(int x, int y, t_data *data);
+// -> cam_mouvement
+void	cam_mouvemenmt(t_data *data, double x, double y, double degres);
 
 //* parsing
 // -> check_mapfile
