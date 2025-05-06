@@ -135,7 +135,7 @@ int		check_carac(char **c_map, t_data *data);
 //* struct
 // -> struct_data
 int		init_data(t_data *data, char *file);
-int		clear_data(t_data *data);
+void	clear_data(t_data *data);
 // -> struct img
 int		init_img(t_data *data);
 void	clear_img(t_data *data);
