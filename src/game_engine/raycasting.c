@@ -2,6 +2,7 @@
 
 void	ray_init(t_data *data);
 void	ray_init_bis(t_data *data);
+void	dad_algorythm(t_data *data);
 
 void	game_engine(t_data *data)
 {
@@ -10,6 +11,7 @@ void	game_engine(t_data *data)
 	while (++data->ray->x < WIDTH)
 	{
 		ray_init(data);
+		dad_algorythm(data);
 	}
 	MLX_IMG_WIN(data->mlx_ptr, data->mlx_win, data->img->img, 0, 0);
 }
@@ -79,7 +81,13 @@ void	dad_algorythm(t_data *data)
 			data->ray->map_y += data->ray->step_y;
 			data->ray->side = 1;	//Mur horizontal
 		}
-		if (data->d_map->map[data->ray->map_y][data->ray->map_x] > 0)
+		if (data->d_map->map[data->ray->map_y][data->ray->map_x] == '1')
 			data->ray->hit = 1;
 	}
+	if (data->ray->side == 0)
+		data->ray->perp_wall_dist = data->ray->side_dist_x - data->ray->delta_dist_x;
+	else
+		data->ray->perp_wall_dist = data->ray->side_dist_y - data->ray->delta_dist_y;
+}
+
 }
