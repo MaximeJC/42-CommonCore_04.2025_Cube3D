@@ -12,6 +12,13 @@ void	game_engine(t_data *data)
 	{
 		ray_init(data);
 		dad_algorythm(data);
+		data->ray->line_height = (int)(HEIGHT / data->ray->perp_wall_dist * 1.4);
+		data->ray->draw_start_pix = -data->ray->line_height / 2 + HEIGHT / 2;
+		if (data->ray->draw_start_pix < 0)
+			data->ray->draw_start_pix = 0;
+		data->ray->draw_end_pix = data->ray->line_height / 2 + HEIGHT / 2;
+		if (data->ray->draw_end_pix >= HEIGHT)
+			data->ray->draw_end_pix = HEIGHT - 1;
 	}
 	MLX_IMG_WIN(data->mlx_ptr, data->mlx_win, data->img->img, 0, 0);
 }
