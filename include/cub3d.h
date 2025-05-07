@@ -123,12 +123,12 @@ typedef struct s_raycast
 # define KEY_RIGHT 65363
 
 //* defines PI
-#define M_PI 3.14159265358979323846
+# define M_PI 3.14159265358979323846
 
 //* game_engine
 // -> cam_mouvement
 void	cam_mouvemenmt(t_data *data, double old_pos_x, double old_pos_y,
-	double degres);
+			double degres);
 // -> display
 void	display_fc(t_data *data);
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
