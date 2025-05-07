@@ -32,9 +32,9 @@ static void	display_fc(t_data *data)
 		while (++x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
-				ft_mlx_pixel_put(data, x, y, data->d_map->f_rgb);
-			else
 				ft_mlx_pixel_put(data, x, y, data->d_map->c_rgb);
+			else
+				ft_mlx_pixel_put(data, x, y, data->d_map->f_rgb);
 		}
 	}
 }
