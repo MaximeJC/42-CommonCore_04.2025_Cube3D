@@ -128,7 +128,7 @@ typedef struct s_raycast
 //* game_engine
 // -> cam_mouvement
 void	cam_mouvemenmt(t_data *data, double old_pos_x, double old_pos_y,
-double degres);
+	double degres);
 // -> display
 void	display_fc(t_data *data);
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -140,6 +140,7 @@ void	mlx_win_init(t_data *data);
 int		close_mlx(t_data *data);
 int		esc_press(int keycode, t_data *data);
 // -> raycasting
+void	game_engine(t_data *data);
 
 //* parsing
 // -> check_mapfile
