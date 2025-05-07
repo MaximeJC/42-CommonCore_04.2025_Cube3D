@@ -127,7 +127,8 @@ typedef struct s_raycast
 
 //* game_engine
 // -> cam_mouvement
-void	cam_mouvemenmt(t_data *data, double x, double y, double degres);
+void	cam_mouvemenmt(t_data *data, double old_pos_x, double old_pos_y,
+double degres);
 // -> display
 void	display_once(t_data *data);
 // -> game_controls
