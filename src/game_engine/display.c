@@ -1,15 +1,6 @@
 #include "cub3d.h"
 
-static void	display_fc(t_data *data);
-static void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
-
-void	display_once(t_data *data)
-{
-	display_fc(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->img->img, 0, 0);
-}
-
-static void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -20,7 +11,7 @@ static void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static void	display_fc(t_data *data)
+void	display_fc(t_data *data)
 {
 	int	x;
 	int	y;

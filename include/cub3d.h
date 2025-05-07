@@ -130,7 +130,8 @@ typedef struct s_raycast
 void	cam_mouvemenmt(t_data *data, double old_pos_x, double old_pos_y,
 double degres);
 // -> display
-void	display_once(t_data *data);
+void	display_fc(t_data *data);
+void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 // -> game_controls
 int		key_press(int keycode, t_data *data);
 int		mouse_move(int x, int y, t_data *data);
