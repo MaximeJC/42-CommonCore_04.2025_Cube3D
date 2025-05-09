@@ -75,6 +75,7 @@ void	set_player_data(char c, t_data *data, int y, int x)
 		data->player->dir_x = -1;
 		data->player->plan_y = -0.66;
 	}
+	data->d_map->map[y][x] = 'P';
 }
 
 int	recursive_check(char **c_map, int pos_y, int pos_x)
