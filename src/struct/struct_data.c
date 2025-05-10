@@ -2,6 +2,7 @@
 
 int	init_data(t_data *data, char *file)
 {
+    memset(data->keys, 0, sizeof(data->keys));
 	data->filename = file;
 	data->mlx_ptr = NULL;
 	data->mlx_win = NULL;

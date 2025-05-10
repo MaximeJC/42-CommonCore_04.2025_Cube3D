@@ -18,6 +18,7 @@ typedef struct s_data
 	struct s_map		*d_map;
 	struct s_player		*player;
 	struct s_raycast	*ray;
+	int					keys[65536];
 }						t_data;
 
 typedef struct s_img
@@ -122,6 +123,7 @@ typedef struct s_raycast
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 # define KEY_CTRL 65507
+# define MAX_KEYS 65536
 
 //* defines PI
 # define M_PI 3.14159265358979323846
@@ -136,6 +138,8 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 // -> game_controls
 int		key_press(int keycode, t_data *data);
 int		mouse_move(int x, int y, t_data *data);
+int key_release(int keycode, t_data *data);
+int	handle_keys(t_data *data);
 // -> mlx_manegement
 void	mlx_win_init(t_data *data);
 int		close_mlx(t_data *data);
