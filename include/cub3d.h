@@ -67,12 +67,12 @@ typedef struct s_raycast
 	int		map_y;			//coordonnée y du carré dans lequel est pos
 	double	side_dist_x;	//distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
 	double	side_dist_y;	//distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
-	// double	delta_dist_x;		//distance que rayon parcours entre chaque point d'intersection vertical
-	// double	delta_dist_y;		//distance que le rayon parcours entre chaque point d'intersection horizontal
+	double	delta_dist_x;	//distance que rayon parcours entre chaque point d'intersection vertical
+	double	delta_dist_y;	//distance que le rayon parcours entre chaque point d'intersection horizontal
 	int		step_x;			//-1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
 	int		step_y;			//-1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
 	int		hit;			// 1 si un mur a ete touche, 0 sinon
-	// int		side;			// 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
+	int		side;			// 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
 	double	perp_wall_dist;	//distance du joueur au mur
 	int		line_height;	//hauteur de la ligne a dessiner
 	int		draw_start_pix;	//position de debut ou il faut dessiner
@@ -123,20 +123,24 @@ typedef struct s_raycast
 # define KEY_RIGHT 65363
 
 //* defines PI
-#define M_PI 3.14159265358979323846
+# define M_PI 3.14159265358979323846
 
 //* game_engine
+// -> cam_mouvement
+void	cam_mouvemenmt(t_data *data, double old_pos_x, double old_pos_y,
+			double degres);
 // -> display
-void	display_once(t_data *data);
+void	display_fc(t_data *data);
+void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
+// -> game_controls
+int		key_press(int keycode, t_data *data);
+int		mouse_move(int x, int y, t_data *data);
 // -> mlx_manegement
 void	mlx_win_init(t_data *data);
 int		close_mlx(t_data *data);
 int		esc_press(int keycode, t_data *data);
-// -> game_controls
-int		key_press(int keycode, t_data *data);
-int		mouse_move(int x, int y, t_data *data);
-// -> cam_mouvement
-void	cam_mouvemenmt(t_data *data, double x, double y, double degres);
+// -> raycasting
+void	game_engine(t_data *data);
 
 //* parsing
 // -> check_mapfile

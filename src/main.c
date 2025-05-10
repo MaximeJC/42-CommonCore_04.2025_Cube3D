@@ -23,10 +23,10 @@ int	main(int argc, char const *argv[])
 		return (clear_data(&data), 1);
 	init_raycast(&data);
 	mlx_win_init(&data);
-	display_once(&data);
 	mlx_hook(data.mlx_win, 6, 1L << 6, mouse_move, &data);
 	mlx_hook(data.mlx_win, 17, 0, close_mlx, &data);
 	mlx_hook(data.mlx_win, 2, 1L << 0, key_press, &data);
+	game_engine(&data);
 	mlx_loop(data.mlx_ptr);
 	return (clear_data(&data), 0);
 }
