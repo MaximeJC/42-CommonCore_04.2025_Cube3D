@@ -16,6 +16,7 @@ DFLAGS	= -Lminilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 GAME_DIR	=	game_engine/
 GAME		=	cam_mouvement display game_controls mlx_management raycasting \
+				player_movement \
 
 PARSE_DIR	=	parsing/
 PARSE		=	check_mapfile get_data_map get_map get_data_map_utils \

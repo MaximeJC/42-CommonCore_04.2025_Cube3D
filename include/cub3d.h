@@ -121,6 +121,7 @@ typedef struct s_raycast
 # define KEY_LEFT 65361
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
+# define KEY_CTRL 65507
 
 //* defines PI
 # define M_PI 3.14159265358979323846
@@ -141,6 +142,9 @@ int		close_mlx(t_data *data);
 int		esc_press(int keycode, t_data *data);
 // -> raycasting
 void	game_engine(t_data *data);
+// -> player_movement
+void	player_move_up_down(t_data *data, double speed);
+void	player_move_left_right(t_data *data, double speed);
 
 //* parsing
 // -> check_mapfile
