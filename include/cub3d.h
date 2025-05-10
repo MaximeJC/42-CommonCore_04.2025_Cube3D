@@ -19,6 +19,7 @@ typedef struct s_data
 	struct s_player		*player;
 	struct s_raycast	*ray;
 	int					keys[65536];
+	int					mouse;
 }						t_data;
 
 typedef struct s_img

@@ -21,6 +21,7 @@ int	mouse_move(int x, int y, t_data *data)
 	double	delta_x;
 	double	sensibility;
 	double	angle;
+	static int	cmpt = 0;
 
 	if (x == WIDTH / 2 && y == HEIGHT / 2)
 		return (0);
@@ -30,7 +31,16 @@ int	mouse_move(int x, int y, t_data *data)
 	(void)y;
 	delta_x = x - WIDTH / 2;
 	angle = delta_x * sensibility;
+	data->mouse = 1;
 	cam_mouvemenmt(data, data->player->dir_x, data->player->dir_y, angle);
+	data->mouse = 0;
+	if (cmpt < 10)
+		cmpt++;
+	else if (cmpt == 10)
+	{
+		game_engine(data);
+		cmpt = 0;
+	}
 	mlx_mouse_move(data->mlx_ptr, data->mlx_win, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }
