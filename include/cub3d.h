@@ -155,6 +155,7 @@ void	cam_mouvemenmt(t_data *data, double old_pos_x, double old_pos_y,
 void	display_fc(t_data *data);
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		ft_mlx_pixel_get(t_data *data, int x, int y, int texture);
+void	minimap_drawing(t_data *data);
 // -> game_controls
 int		key_press(int keycode, t_data *data);
 int		mouse_move(int x, int y, t_data *data);
