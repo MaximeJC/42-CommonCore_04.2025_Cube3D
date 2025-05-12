@@ -202,5 +202,7 @@ void	clear_raycast(t_data *data);
 //* utils
 // -> error_handler
 void	error_handler(char *msg, t_data *data, int exit);
+// -> raycasting_utils
+int		ft_color_shadow(int color);
 
 #endif

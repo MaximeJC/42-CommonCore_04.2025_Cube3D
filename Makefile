@@ -26,7 +26,7 @@ STRUCT_DIR	=	struct/
 STRUCT		=	struct_data struct_img struct_map struct_player struct_raycast \
 
 UTILS_DIR	=	utils/
-UTILS		=	error_handler \
+UTILS		=	error_handler raycasting_utils \
 
 SRC_FILES	=	main \
 				$(addprefix $(GAME_DIR), $(GAME)) \
