@@ -139,8 +139,8 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 // -> game_controls
 int		key_press(int keycode, t_data *data);
 int		mouse_move(int x, int y, t_data *data);
-int key_release(int keycode, t_data *data);
-int	handle_keys(t_data *data);
+int		key_release(int keycode, t_data *data);
+int		handle_keys(t_data *data);
 // -> mlx_manegement
 void	mlx_win_init(t_data *data);
 int		close_mlx(t_data *data);

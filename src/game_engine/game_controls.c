@@ -18,9 +18,9 @@ int	key_release(int keycode, t_data *data)
 
 int	mouse_move(int x, int y, t_data *data)
 {
-	double	delta_x;
-	double	sensibility;
-	double	angle;
+	double		delta_x;
+	double		sensibility;
+	double		angle;
 	static int	cmpt = 0;
 
 	if (x == WIDTH / 2 && y == HEIGHT / 2)
