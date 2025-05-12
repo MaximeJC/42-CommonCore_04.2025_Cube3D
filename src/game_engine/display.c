@@ -1,5 +1,7 @@
 #include "cub3d.h"
 
+static void	minimap_drawing_bis(t_data *data, int x, int y, int color);
+
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -61,14 +63,22 @@ void	minimap_drawing(t_data *data)
 				color = MINMAP_PLAYER;
 			else
 				color = MINMAP_FLOOR;
-			i = -1;
-			while (++i < 3)
-			{
-				j = -1;
-				while (++j < 3)
-					ft_mlx_pixel_put(data, (x - 10) + i,
-						(y - 10) + j, color);
-			}
+			minimap_drawing_bis(data, x, y, color);
 		}
+	}
+}
+
+static void	minimap_drawing_bis(t_data *data, int x, int y, int color)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < 3)
+	{
+		j = -1;
+		while (++j < 3)
+			ft_mlx_pixel_put(data, (x - 10) + i,
+				(y - 10) + j, color);
 	}
 }

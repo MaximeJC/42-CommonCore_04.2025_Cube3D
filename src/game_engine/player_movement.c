@@ -15,7 +15,8 @@ void	player_move_up_down(t_data *data, double speed)
 		data->player->pos_x = new_pos_x;
 	if (data->d_map->map[(int)new_pos_y][(int)data->player->pos_x] != '1')
 		data->player->pos_y = new_pos_y;
-	if (old_pos_x != (int)data->player->pos_x || old_pos_y != (int)data->player->pos_y)
+	if (old_pos_x != (int)data->player->pos_x
+		|| old_pos_y != (int)data->player->pos_y)
 		data->d_map->map[old_pos_y][old_pos_x] = '0';
 	data->d_map->map[(int)data->player->pos_y][(int)data->player->pos_x] = 'P';
 	game_engine(data);
@@ -36,7 +37,8 @@ void	player_move_left_right(t_data *data, double speed)
 		data->player->pos_x = new_pos_x;
 	if (data->d_map->map[(int)new_pos_y][(int)data->player->pos_x] != '1')
 		data->player->pos_y = new_pos_y;
-	if (old_pos_x != (int)data->player->pos_x || old_pos_y != (int)data->player->pos_y)
+	if (old_pos_x != (int)data->player->pos_x
+		|| old_pos_y != (int)data->player->pos_y)
 		data->d_map->map[old_pos_y][old_pos_x] = '0';
 	data->d_map->map[(int)data->player->pos_y][(int)data->player->pos_x] = 'P';
 	game_engine(data);
