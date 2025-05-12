@@ -8,6 +8,8 @@
 # include <fcntl.h>
 # include <math.h>
 
+# define MAX_KEYS 65536
+
 //* Global data struct
 typedef struct s_data
 {
@@ -18,7 +20,7 @@ typedef struct s_data
 	struct s_map		*d_map;
 	struct s_player		*player;
 	struct s_raycast	*ray;
-	int					keys[65536];
+	int					keys[MAX_KEYS];
 	int					mouse;
 }						t_data;
 
