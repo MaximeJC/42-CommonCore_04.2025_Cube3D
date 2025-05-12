@@ -11,6 +11,15 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+int	ft_mlx_pixel_get(t_data *data, int x, int y, int texture_num)
+{
+	char	*dst;
+
+	dst = data->textures[texture_num] + (y * data->text_line_len[texture_num] + x
+			* (data->text_bpp[texture_num] >> 3));
+	return (*(unsigned int *)dst);
+}
+
 void	display_fc(t_data *data)
 {
 	int	x;
