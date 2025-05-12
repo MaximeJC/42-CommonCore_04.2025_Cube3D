@@ -22,6 +22,10 @@ typedef struct s_data
 	struct s_raycast	*ray;
 	int					keys[MAX_KEYS];
 	int					mouse;
+	char				*textures[4];
+	int					text_bpp[4];
+	int					text_line_len[4];
+	int					text_endian[4];
 }						t_data;
 
 typedef struct s_img
@@ -126,7 +130,12 @@ typedef struct s_raycast
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 # define KEY_CTRL 65507
-# define MAX_KEYS 65536
+
+//* Textures
+# define NO_TEXTURE 0
+# define SO_TEXTURE 1
+# define EA_TEXTURE 2
+# define WE_TEXTURE 3
 
 //* defines PI
 # define M_PI 3.14159265358979323846
