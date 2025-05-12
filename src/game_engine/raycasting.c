@@ -3,7 +3,6 @@
 void	ray_init(t_data *data);
 void	ray_init_bis(t_data *data);
 void	dad_algorythm(t_data *data);
-void	draw_vertical_line(t_data *data);
 
 void	game_engine(t_data *data)
 {
@@ -21,7 +20,7 @@ void	game_engine(t_data *data)
 		data->ray->draw_end_pix = data->ray->line_height / 2 + HEIGHT / 2;
 		if (data->ray->draw_end_pix >= HEIGHT)
 			data->ray->draw_end_pix = HEIGHT - 1;
-		draw_vertical_line(data);
+		draw_texture(data);
 	}
 	MLX_IMG_WIN(data->mlx_ptr, data->mlx_win, data->img->img, 0, 0);
 }
@@ -100,38 +99,4 @@ void	dad_algorythm(t_data *data)
 	else
 		data->ray->perp_wall_dist = data->ray->side_dist_y
 			- data->ray->delta_dist_y;
-}
-
-#define NORTH_COLOR 16711680	//RED
-#define SOUTH_COLOR 65280		//GREEN
-#define EAST_COLOR 255			//BLUE
-#define WEST_COLOR 16776960		//YELLOW
-
-void	draw_vertical_line(t_data *data)
-{
-	int	color;
-	int	i;
-
-	i = data->ray->draw_start_pix;
-	if (data->ray->side == 0)
-	{
-		if (data->ray->ray_dir_x > 0)
-			color = EAST_COLOR;
-		else
-			color = WEST_COLOR;
-	}
-	else
-	{
-		if (data->ray->ray_dir_y > 0)
-			color = SOUTH_COLOR;
-		else
-			color = NORTH_COLOR;
-	}
-	if (data->ray->side == 0)
-		color *= 0.8;
-	while (i <= data->ray->draw_end_pix)
-	{
-		ft_mlx_pixel_put(data, data->ray->x, i, color);
-		i++;
-	}
 }
