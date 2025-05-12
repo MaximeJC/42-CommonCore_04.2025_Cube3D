@@ -38,3 +38,37 @@ void	display_fc(t_data *data)
 		}
 	}
 }
+
+void	minimap_drawing(t_data *data)
+{
+	int	x;
+	int	y;
+	int	color;
+	int	i;
+	int	j;
+
+	y = 9;
+	while (++y < data->d_map->height + 10)
+	{
+		x = 9;
+		while (++x < data->d_map->width + 10)
+		{
+			if (data->d_map->map[y][x] == ' ')
+				continue ;
+			if (data->d_map->map[y][x] == '1')
+				color = MINMAP_WALL;
+			else if (data->d_map->map[y][x] == 'P')
+				color = MINMAP_PLAYER;
+			else
+				color = MINMAP_FLOOR;
+			i = -1;
+			while (++i < 3)
+			{
+				j = -1;
+				while (++j < 3)
+					ft_mlx_pixel_put(data, (x - 10) + i,
+						(y - 10) + j, color);
+			}
+		}
+	}
+}

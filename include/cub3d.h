@@ -140,6 +140,9 @@ typedef struct s_raycast
 # define SO_TEXTURE 1
 # define EA_TEXTURE 2
 # define WE_TEXTURE 3
+# define MINMAP_WALL 0x00333333
+# define MINMAP_PLAYER 0x00FF0000
+# define MINMAP_FLOOR 0x00CCCCCC
 
 //* PI
 # define M_PI 3.14159265358979323846
