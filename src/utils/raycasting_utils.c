@@ -1,31 +1,27 @@
 #include "cub3d.h"
 
+static void	draw_texture_bis(t_data *data, int texture_num, double wall_x);
+
 int	ft_color_shadow(int color)
 {
-	int r = (color >> 16) & 0xFF;
-	int g = (color >> 8) & 0xFF;
-	int b = color & 0xFF;
+	int	r;
+	int	g;
+	int	b;
 
+	r = (color >> 16) & 0xFF;
+	g = (color >> 8) & 0xFF;
+	b = color & 0xFF;
 	r = (r * 85) >> 7;
 	g = (g * 85) >> 7;
 	b = (b * 85) >> 7;
-
-	return (r << 16) | (g << 8) | b;
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	draw_texture(t_data *data)
 {
 	int		texture_num;
 	double	wall_x;
-	int		text_x;
-	double	step;
-	double	text_pos;
-	int		y;
-	// int		text_y;
-	// int		color;
 
-	// wall_x = 0;
-	// text_x = 0;
 	if (data->ray->side == 0)
 	{
 		wall_x = data->player->pos_y + data->ray->perp_wall_dist
@@ -44,6 +40,16 @@ void	draw_texture(t_data *data)
 		else
 			texture_num = NO_TEXTURE;
 	}
+	draw_texture_bis(data, texture_num, wall_x);
+}
+
+static void	draw_texture_bis(t_data *data, int texture_num, double wall_x)
+{
+	int		text_x;
+	double	step;
+	double	text_pos;
+	int		y;
+
 	wall_x -= floor(wall_x);
 	text_x = (int)(wall_x * (double)IMG_SIZE);
 	if (texture_num == NO_TEXTURE || texture_num == EA_TEXTURE)
@@ -54,16 +60,14 @@ void	draw_texture(t_data *data)
 	y = data->ray->draw_start_pix;
 	while (y < data->ray->draw_end_pix)
 	{
-		// text_y = (int)text_pos & (IMG_SIZE - 1);
 		text_pos += step;
 		if (data->ray->side == 0)
-			ft_mlx_pixel_put(data, data->ray->x, y, ft_mlx_pixel_get(data, text_x, (int)text_pos & (IMG_SIZE - 1), texture_num));
+			ft_mlx_pixel_put(data, data->ray->x, y, ft_mlx_pixel_get(data,
+					text_x, (int)text_pos & (IMG_SIZE - 1), texture_num));
 		else
-			ft_mlx_pixel_put(data, data->ray->x, y, ft_color_shadow(ft_mlx_pixel_get(data, text_x, (int)text_pos & (IMG_SIZE - 1), texture_num)));
-		// color = ft_mlx_pixel_get(data, text_x, (int)text_pos & (IMG_SIZE - 1), texture_num);
-		// if (data->ray->side == 1)
-			// color = ft_color_shadow(color);
-		// ft_mlx_pixel_put(data, data->ray->x, y, color);
+			ft_mlx_pixel_put(data, data->ray->x, y, ft_color_shadow(
+					ft_mlx_pixel_get(data, text_x, (int)text_pos
+						& (IMG_SIZE - 1), texture_num)));
 		y++;
 	}
 }

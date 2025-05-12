@@ -27,13 +27,13 @@ void	mlx_win_init(t_data *data)
 static void	mlx_win_init_bis(t_data *data)
 {
 	data->textures[NO_TEXTURE] = mlx_get_data_addr(data->d_map->no_text_mlx,
-		&data->text_bpp[0], &data->text_line_len[0], &data->text_endian[0]);
+			&data->text_bpp[0], &data->text_line_len[0], &data->text_endian[0]);
 	data->textures[SO_TEXTURE] = mlx_get_data_addr(data->d_map->so_text_mlx,
-		&data->text_bpp[1], &data->text_line_len[1], &data->text_endian[1]);
+			&data->text_bpp[1], &data->text_line_len[1], &data->text_endian[1]);
 	data->textures[EA_TEXTURE] = mlx_get_data_addr(data->d_map->ea_text_mlx,
-		&data->text_bpp[2], &data->text_line_len[2], &data->text_endian[2]);
+			&data->text_bpp[2], &data->text_line_len[2], &data->text_endian[2]);
 	data->textures[WE_TEXTURE] = mlx_get_data_addr(data->d_map->we_text_mlx,
-		&data->text_bpp[3], &data->text_line_len[3], &data->text_endian[3]);
+			&data->text_bpp[3], &data->text_line_len[3], &data->text_endian[3]);
 	if (!data->textures[0] || !data->textures[1]
 		|| !data->textures[2] || !data->textures[3])
 		return (error_handler(ERR_IMG_INIT, data, 1));
