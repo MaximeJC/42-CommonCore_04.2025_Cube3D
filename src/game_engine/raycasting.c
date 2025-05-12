@@ -22,6 +22,7 @@ void	game_engine(t_data *data)
 			data->ray->draw_end_pix = HEIGHT - 1;
 		draw_texture(data);
 	}
+	minimap_drawing(data);
 	MLX_IMG_WIN(data->mlx_ptr, data->mlx_win, data->img->img, 0, 0);
 }
 
