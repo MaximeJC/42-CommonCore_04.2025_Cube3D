@@ -102,6 +102,7 @@ typedef struct s_raycast
 # define ERR_WALL "Error\nWall not completed"
 # define ERR_TM_PLY "Error\nToo many players. Usage: One player."
 # define ERR_NE_PLY "Error\nNot enough players. Usage: One player."
+# define ERR_TEXTURE "Error\nInvalid texture format. Use XPM format."
 
 //* Error messages - MLX
 # define ERR_MLX_INIT "Error\nMlx init error"

@@ -7,6 +7,11 @@ void	mlx_win_init(t_data *data)
 	int	temp;
 
 	temp = 0;
+	if (!ft_isvalid_str(data->d_map->no_texture)
+		|| !ft_isvalid_str(data->d_map->so_texture)
+		|| !ft_isvalid_str(data->d_map->ea_texture)
+		|| !ft_isvalid_str(data->d_map->we_texture))
+		return (error_handler(ERR_TEXTURE, data, 1));
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (error_handler(ERR_MLX_INIT, data, 1));
