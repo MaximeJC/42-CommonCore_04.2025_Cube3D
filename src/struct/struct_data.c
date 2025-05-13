@@ -2,6 +2,9 @@
 
 int	init_data(t_data *data, char *file)
 {
+	int	i;
+
+	i = -1;
 	memset(data->keys, 0, sizeof(data->keys));
 	data->mouse = 0;
 	data->filename = file;
@@ -11,6 +14,8 @@ int	init_data(t_data *data, char *file)
 	data->ray = NULL;
 	if (init_map(data))
 		return (1);
+	while (++i < 4)
+		data->textures[i] = NULL;
 	return (init_player(data));
 }
 

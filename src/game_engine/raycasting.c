@@ -1,9 +1,8 @@
 #include "cub3d.h"
 
-void	ray_init(t_data *data);
-void	ray_init_bis(t_data *data);
-void	dad_algorythm(t_data *data);
-void	draw_vertical_line(t_data *data);
+static void	ray_init(t_data *data);
+static void	ray_init_bis(t_data *data);
+static void	dad_algorythm(t_data *data);
 
 void	game_engine(t_data *data)
 {
@@ -21,12 +20,12 @@ void	game_engine(t_data *data)
 		data->ray->draw_end_pix = data->ray->line_height / 2 + HEIGHT / 2;
 		if (data->ray->draw_end_pix >= HEIGHT)
 			data->ray->draw_end_pix = HEIGHT - 1;
-		draw_vertical_line(data);
+		draw_texture(data);
 	}
 	MLX_IMG_WIN(data->mlx_ptr, data->mlx_win, data->img->img, 0, 0);
 }
 
-void	ray_init(t_data *data)
+static void	ray_init(t_data *data)
 {
 	data->ray->camera_x = 2 * (data->ray->x + 0.000001) / (double)WIDTH - 1;
 	data->ray->ray_dir_x = data->player->dir_x + data->player->plan_x
@@ -47,7 +46,7 @@ void	ray_init(t_data *data)
 	ray_init_bis(data);
 }
 
-void	ray_init_bis(t_data *data)
+static void	ray_init_bis(t_data *data)
 {
 	if (data->ray->ray_dir_x < 0)
 	{
@@ -75,7 +74,7 @@ void	ray_init_bis(t_data *data)
 	}
 }
 
-void	dad_algorythm(t_data *data)
+static void	dad_algorythm(t_data *data)
 {
 	while (data->ray->hit == 0)
 	{
@@ -83,13 +82,13 @@ void	dad_algorythm(t_data *data)
 		{
 			data->ray->side_dist_x += data->ray->delta_dist_x;
 			data->ray->map_x += data->ray->step_x;
-			data->ray->side = 0; //Mur vertical
+			data->ray->side = 0;
 		}
 		else
 		{
 			data->ray->side_dist_y += data->ray->delta_dist_y;
 			data->ray->map_y += data->ray->step_y;
-			data->ray->side = 1; //Mur horizontal
+			data->ray->side = 1;
 		}
 		if (data->d_map->map[data->ray->map_y][data->ray->map_x] == '1')
 			data->ray->hit = 1;
@@ -100,38 +99,4 @@ void	dad_algorythm(t_data *data)
 	else
 		data->ray->perp_wall_dist = data->ray->side_dist_y
 			- data->ray->delta_dist_y;
-}
-
-#define NORTH_COLOR 16711680	//RED
-#define SOUTH_COLOR 65280		//GREEN
-#define EAST_COLOR 255			//BLUE
-#define WEST_COLOR 16776960		//YELLOW
-
-void	draw_vertical_line(t_data *data)
-{
-	int	color;
-	int	i;
-
-	i = data->ray->draw_start_pix;
-	if (data->ray->side == 0)
-	{
-		if (data->ray->ray_dir_x > 0)
-			color = EAST_COLOR;
-		else
-			color = WEST_COLOR;
-	}
-	else
-	{
-		if (data->ray->ray_dir_y > 0)
-			color = SOUTH_COLOR;
-		else
-			color = NORTH_COLOR;
-	}
-	if (data->ray->side == 0)
-		color *= 0.8;
-	while (i <= data->ray->draw_end_pix)
-	{
-		ft_mlx_pixel_put(data, data->ray->x, i, color);
-		i++;
-	}
 }

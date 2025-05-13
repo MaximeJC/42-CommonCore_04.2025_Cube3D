@@ -8,6 +8,9 @@
 # include <fcntl.h>
 # include <math.h>
 
+//* Max keys
+# define MAX_KEYS 65536
+
 //* Global data struct
 typedef struct s_data
 {
@@ -18,10 +21,15 @@ typedef struct s_data
 	struct s_map		*d_map;
 	struct s_player		*player;
 	struct s_raycast	*ray;
-	int					keys[65536];
+	int					keys[MAX_KEYS];
 	int					mouse;
+	char				*textures[4];
+	int					text_bpp[4];
+	int					text_line_len[4];
+	int					text_endian[4];
 }						t_data;
 
+//* Screen img struct
 typedef struct s_img
 {
 	void	*img;
@@ -52,34 +60,35 @@ typedef struct s_map
 //* Player struct
 typedef struct s_player
 {
-	double	pos_x;			//position x du joueur
-	double	pos_y;			//position y du joueur
-	double	dir_x;			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
-	double	dir_y;			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
-	double	plan_x;			//vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
-	double	plan_y;			//vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plan_x;
+	double	plan_y;
 }			t_player;
 
+//* Ray struct
 typedef struct s_raycast
 {
-	double	ray_dir_x;		//calcul de direction x du rayon
-	double	ray_dir_y;		//calcul de direction y du rayon
-	double	camera_x;		//point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
-	int		map_x;			//coordonée x du carré dans lequel est pos
-	int		map_y;			//coordonnée y du carré dans lequel est pos
-	double	side_dist_x;	//distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
-	double	side_dist_y;	//distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
-	double	delta_dist_x;	//distance que rayon parcours entre chaque point d'intersection vertical
-	double	delta_dist_y;	//distance que le rayon parcours entre chaque point d'intersection horizontal
-	int		step_x;			//-1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
-	int		step_y;			//-1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
-	int		hit;			// 1 si un mur a ete touche, 0 sinon
-	int		side;			// 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
-	double	perp_wall_dist;	//distance du joueur au mur
-	int		line_height;	//hauteur de la ligne a dessiner
-	int		draw_start_pix;	//position de debut ou il faut dessiner
-	int		draw_end_pix;	//position de fin ou il faut dessiner
-	int		x;				//permet de parcourir tous les rayons
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	camera_x;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	double	perp_wall_dist;
+	int		line_height;
+	int		draw_start_pix;
+	int		draw_end_pix;
+	int		x;
 }			t_raycast;
 
 //* Error messages - Global
@@ -96,6 +105,7 @@ typedef struct s_raycast
 # define ERR_WALL "Error\nWall not completed"
 # define ERR_TM_PLY "Error\nToo many players. Usage: One player."
 # define ERR_NE_PLY "Error\nNot enough players. Usage: One player."
+# define ERR_TEXTURE "Error\nInvalid texture format. Use XPM format."
 
 //* Error messages - MLX
 # define ERR_MLX_INIT "Error\nMlx init error"
@@ -124,9 +134,14 @@ typedef struct s_raycast
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 # define KEY_CTRL 65507
-# define MAX_KEYS 65536
 
-//* defines PI
+//* Textures
+# define NO_TEXTURE 0
+# define SO_TEXTURE 1
+# define EA_TEXTURE 2
+# define WE_TEXTURE 3
+
+//* PI
 # define M_PI 3.14159265358979323846
 
 //* game_engine
@@ -136,6 +151,7 @@ void	cam_mouvemenmt(t_data *data, double old_pos_x, double old_pos_y,
 // -> display
 void	display_fc(t_data *data);
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		ft_mlx_pixel_get(t_data *data, int x, int y, int texture);
 // -> game_controls
 int		key_press(int keycode, t_data *data);
 int		mouse_move(int x, int y, t_data *data);
@@ -190,5 +206,8 @@ void	clear_raycast(t_data *data);
 //* utils
 // -> error_handler
 void	error_handler(char *msg, t_data *data, int exit);
+// -> raycasting_utils
+int		ft_color_shadow(int color);
+void	draw_texture(t_data *data);
 
 #endif
