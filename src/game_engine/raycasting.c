@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolmar <nicolmar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 11:38:00 by nicolmar          #+#    #+#             */
+/*   Updated: 2025/05/13 11:38:01 by nicolmar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static void	ray_init(t_data *data);
@@ -22,6 +34,7 @@ void	game_engine(t_data *data)
 			data->ray->draw_end_pix = HEIGHT - 1;
 		draw_texture(data);
 	}
+	minimap_drawing(data);
 	MLX_IMG_WIN(data->mlx_ptr, data->mlx_win, data->img->img, 0, 0);
 }
 

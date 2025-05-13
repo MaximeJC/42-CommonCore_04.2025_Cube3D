@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nicolmar <nicolmar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 11:38:45 by nicolmar          #+#    #+#             */
+/*   Updated: 2025/05/13 11:38:46 by nicolmar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -140,6 +152,10 @@ typedef struct s_raycast
 # define SO_TEXTURE 1
 # define EA_TEXTURE 2
 # define WE_TEXTURE 3
+# define MINMAP_WALL 0x00333333
+# define MINMAP_PLAYER 0x00FF0000
+# define MINMAP_FLOOR 0x00CCCCCC
+# define MINMAP_PIX_SIZE 6
 
 //* PI
 # define M_PI 3.14159265358979323846
@@ -152,6 +168,7 @@ void	cam_mouvemenmt(t_data *data, double old_pos_x, double old_pos_y,
 void	display_fc(t_data *data);
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		ft_mlx_pixel_get(t_data *data, int x, int y, int texture);
+void	minimap_drawing(t_data *data);
 // -> game_controls
 int		key_press(int keycode, t_data *data);
 int		mouse_move(int x, int y, t_data *data);
