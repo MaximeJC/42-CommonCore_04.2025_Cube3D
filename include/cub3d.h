@@ -6,7 +6,7 @@
 /*   By: nicolmar <nicolmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:38:45 by nicolmar          #+#    #+#             */
-/*   Updated: 2025/05/13 11:38:46 by nicolmar         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:25:38 by nicolmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct s_raycast
 
 //* Error messages - Map check
 # define ERR_ARGS "Error\nUsage: ./cub3D <map.cub>"
+# define ERR_INV_FILE "Error\nInvalid file."
 # define ERR_NAME_FILE "Error\nInvalid file. Can't open file."
 # define ERR_MAP_FILE "Error\nInvalid file format. Expected a '.cub' file."
 # define ERR_TM_AR "Error\nToo many arguments. Usage: ./program map_file.cub"
@@ -118,6 +119,7 @@ typedef struct s_raycast
 # define ERR_TM_PLY "Error\nToo many players. Usage: One player."
 # define ERR_NE_PLY "Error\nNot enough players. Usage: One player."
 # define ERR_TEXTURE "Error\nInvalid texture format. Use XPM format."
+# define ERR_TEX_NB "Error\nToo many texture in file."
 
 //* Error messages - MLX
 # define ERR_MLX_INIT "Error\nMlx init error"
