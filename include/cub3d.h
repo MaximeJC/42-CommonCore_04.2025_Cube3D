@@ -143,7 +143,7 @@ typedef struct s_raycast
 # define MINMAP_WALL 0x00333333
 # define MINMAP_PLAYER 0x00FF0000
 # define MINMAP_FLOOR 0x00CCCCCC
-# define MINMAP_PIX_SIZE 3
+# define MINMAP_PIX_SIZE 6
 
 //* PI
 # define M_PI 3.14159265358979323846

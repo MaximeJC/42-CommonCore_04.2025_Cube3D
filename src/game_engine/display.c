@@ -46,8 +46,6 @@ void	minimap_drawing(t_data *data)
 	int	x;
 	int	y;
 	int	color;
-	int	i;
-	int	j;
 
 	y = -1;
 	while (++y < data->d_map->height)
