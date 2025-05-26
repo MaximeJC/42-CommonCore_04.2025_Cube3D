@@ -129,8 +129,6 @@ Un script de test (`test_map.sh`) est fourni pour vérifier la validité des fic
 
 ### Remarques
 
-### Remarques
-
 * Ce projet a été développé dans le cadre du cursus de l'École 42.
 * Le thème global de l'application est un **musée**.
 * Assurez-vous de respecter les spécifications du sujet en termes de format de la carte, de textures, etc.
