@@ -87,3 +87,49 @@ Un script de test (`test_map.sh`) est fourni pour vérifier la validité des fic
     * `ECHAP` ou Cliquer sur la croix de la fenêtre
 
 ### Structure du projet
+
+cub3D/
+├── Makefile          # Fichier de compilation
+├── README.md         # Ce fichier
+├── include/          # Fichiers d'en-tête (.h)
+│   └── cub3d.h
+├── libft/            # Librairie personnelle (ft_printf, get_next_line, etc.)
+│   └── ...
+├── minilibx-linux/   # MinilibX
+│   └── ...
+├── map/              # Répertoire contenant les fichiers de carte (.cub)
+│   └── ...
+├── obj/              # Répertoire pour les fichiers objets (.o) (généré)
+├── src/              # Fichiers sources (.c)
+│   ├── game_engine/    # Logique du jeu (raycasting, mouvement, etc.)
+│   │   ├── cam_mouvement.c
+│   │   ├── display.c
+│   │   ├── game_controls.c
+│   │   ├── mlx_management.c
+│   │   ├── player_movement.c
+│   │   ├── raycasting.c
+│   │   └── ...
+│   ├── parsing/        # Analyse et validation des fichiers de carte
+│   │   ├── check_mapfile.c
+│   │   ├── get_data_map.c
+│   │   ├── get_map.c
+│   │   └── ...
+│   ├── struct/         # Définitions des structures de données
+│   │   ├── struct_data.c
+│   │   ├── struct_img.c
+│   │   ├── struct_map.c
+│   │   └── ...
+│   └── utils/          # Fonctions utilitaires diverses
+│       ├── error_handler.c
+│       └── ...
+├── cub3D               # Exécutable (généré)
+└── test_map.sh         # Script de test pour les cartes invalides
+└── textures/           # Répertoire contenant les textures
+└── no_perm.xpm
+
+### Remarques
+
+* Ce projet a été développé dans le cadre du cursus de l'École 42.
+* Le thème global de l'application est un **musée**.
+* Assurez-vous de respecter les spécifications du sujet en termes de format de la carte, de textures, etc.
+* En cas de problème, référez-vous au sujet du projet et aux ressources fournies par l'École 42.
