@@ -1,135 +1,81 @@
-# cub3D - Projet 42
+## :warning: Disclaimer
 
-Ce projet est une implémentation d'un moteur de rendu 3D en raycasting, réalisé dans le cadre du cursus de l'École 42. Il permet d'afficher un environnement 3D à partir d'une carte 2D et de se déplacer à l'intérieur de cet environnement. Le thème global du projet est un **musée**.
+[ :uk: ] Please do not copy-paste this code. In this way, you won't learn a lot. Instead, you can use it to understand how to do some tricky part, but try to redo it by your own.
+Just to let you know, some files may be incorrect. Some bugs may have passed through, or subject may have changed since I did this project.
 
-## Compilation et Exécution
+[ :fr: ] S'il vous plait, ne copier-coller pas ce code. De cette manière, vous n'apprendrez pas grand chose. A la place, vous pouvez l'utiliser pour comprendre certaines parties plus complexes du sujet, mais essayez de le refaire par vos propres moyens.
+Pour information, certains exercices pourraient être incorrects. Quelques bugs pourraient avoir réussi à passer au travers les mailles du filet, ou le sujet a peut-être changé depuis que j'ai complété le projet.
 
-### Prérequis
+---
+# 42-CommonCore_03.2025_Cub3D
 
-* **MinilibX :** Il est impératif de compiler la MinilibX avant de compiler ce projet.
+![Cub3D screenshot](museum_screen.png)
 
-### Compilation
+The goal of this project is to create a graphical 3D program using a 2D map and raycasts. The use of raycasting is mandatory to simulate a 3D image on a 2D screen.
 
-1.  **Cloner le dépôt :**
+As many people usually make a game, with my pair we decided to turn ours into a museum.
 
-    ```bash
-    git clone git@github.com:MaximeJC/42-Cursus_04.2025_Cube3D.git cub3D
-    cd cub3D
-    ```
+This project is the last C project in the common core.
 
-2.  **Compiler la MinilibX :**
+## Usage
 
-    ```bash
-    make mlx
-    ```
+First, make the mlx:
 
-    * Cela compilera la MinilibX. Assurez-vous d'avoir les dépendances nécessaires (`libX11`, `libXext`) installées sur votre système.
+```bash
+make mlx
+```
 
-3.  **Compiler le projet cub3D :**
+Then make the project:
 
-    ```bash
-    make
-    ```
+```bash
+make
+```
 
-    * Cela compilera tous les fichiers sources et créera l'exécutable `cub3D`.
+Finally, launch the game with the map of your choice:
 
-### Exécution
+```bash
+./cub3D [map_path.cub]
+```
 
-1.  **Lancer l'exécutable :**
+## Map tester
 
-    ```bash
-    ./cub3D map/nom_de_ta_carte.cub
-    ```
+There is a script (`test_map.sh`) in the project to check every invalid maps. To use it:
 
-    * Remplacez `map/nom_de_ta_carte.cub` par le chemin vers un fichier de carte valide. Les fichiers de carte doivent avoir l'extension `.cub` et doivent être placés dans le dossier `map/`.
-
-### Testeur de cartes
-
-Un script de test (`test_map.sh`) est fourni pour vérifier la validité des fichiers de carte. Pour l'utiliser :
-
-1.  **Rendre le script exécutable (si nécessaire) :**
+1.  Make file executable:
 
     ```bash
     chmod +x test_map.sh
     ```
 
-2.  **Retirer les permissions du fichier de texture `no_perm.xpm` :**
+2.  Remove permissions from texture file `no_perm.xpm` (mandatory to test texture permission error like in `map/inv20_no_texture_permission.cub`):
 
     ```bash
     chmod -r textures/no_perm.xpm
     ```
 
-    * Ceci est nécessaire pour tester correctement les erreurs de permission de texture.
-
-3.  **Exécuter le script :**
+3.  Execute script:
 
     ```bash
     ./test_map.sh
     ```
 
-    * Le script testera plusieurs fichiers de carte invalides et affichera les résultats.
-    * Vous pouvez également utiliser l'option `--valgrind` pour vérifier les fuites de mémoire pendant les tests :
+4.  If you want to test with valgrind:
 
-        ```bash
-        ./test_map.sh --valgrind
-        ```
+    ```bash
+    ./test_map.sh --valgrind
+    ```
 
-### Contrôles
+## Controls
 
-* **Déplacement :**
-    * `W` : Avancer
-    * `A` : Se déplacer à gauche
-    * `S` : Reculer
-    * `D` : Se déplacer à droite
-* **Rotation :**
-    * Flèches gauche/droite OU Mouvement de la souris
-* **Quitter :**
-    * `ECHAP` ou Cliquer sur la croix de la fenêtre
+* Moving:
+    * `W` : Forward
+    * `A` : Right
+    * `S` : Backward
+    * `D` : Left
+* Camera rotation:
+    * Left/Right arrows or mouse mouvement
+* Quit:
+    * `ECHAP` or window cross
 
-### Structure du projet
-
-* `cub3D/`
-    * `Makefile`          : Fichier de compilation
-    * `README.md`         : Ce fichier
-    * `include/`          : Fichiers d'en-tête (.h)
-        * `cub3d.h`
-    * `libft/`            : Librairie personnelle (ft_printf, get_next_line, etc.)
-        * `...`
-    * `minilibx-linux/`   : MinilibX
-        * `...`
-    * `map/`              : Répertoire contenant les fichiers de carte (.cub)
-        * `...`
-    * `obj/`              : Répertoire pour les fichiers objets (.o) (généré)
-    * `src/`              : Fichiers sources (.c)
-        * `game_engine/`    : Logique du jeu (raycasting, mouvement, etc.)
-            * `cam_mouvement.c`
-            * `display.c`
-            * `game_controls.c`
-            * `mlx_management.c`
-            * `player_movement.c`
-            * `raycasting.c`
-            * `...`
-        * `parsing/`        : Analyse et validation des fichiers de carte
-            * `check_mapfile.c`
-            * `get_data_map.c`
-            * `get_map.c`
-            * `...`
-        * `struct/`         : Définitions des structures de données
-            * `struct_data.c`
-            * `struct_img.c`
-            * `struct_map.c`
-            * `...`
-        * `utils/`          : Fonctions utilitaires diverses
-            * `error_handler.c`
-            * `...`
-    * `cub3D`               : Exécutable (généré)
-    * `test_map.sh`         : Script de test pour les cartes invalides
-    * `textures/`           : Répertoire contenant les textures
-        * `no_perm.xpm`
-
-### Remarques
-
-* Ce projet a été développé dans le cadre du cursus de l'École 42.
-* Le thème global de l'application est un **musée**.
-* Assurez-vous de respecter les spécifications du sujet en termes de format de la carte, de textures, etc.
-* En cas de problème, référez-vous au sujet du projet et aux ressources fournies par l'École 42.
+_Common Core Rank 04 - Completed in May 2025_  
+_Code by [nicolmar](https://github.com/Nico-Mar42) and me_
