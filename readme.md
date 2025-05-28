@@ -7,7 +7,7 @@ Just to let you know, some files may be incorrect. Some bugs may have passed thr
 Pour information, certains exercices pourraient être incorrects. Quelques bugs pourraient avoir réussi à passer au travers les mailles du filet, ou le sujet a peut-être changé depuis que j'ai complété le projet.
 
 ---
-# 42-CommonCore_03.2025_Cub3D
+# 42-CommonCore_05.2025_Cub3D
 
 ![Cub3D screenshot](museum_screen.png)
 
